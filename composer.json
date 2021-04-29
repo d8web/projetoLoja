@@ -1,0 +1,10 @@
+{
+    "name": "name/here",
+    "description": "description",
+    "autoload": {
+        "psr-4": {
+            "core\\": "core/",
+            "src\\": "src/"
+        }
+    }
+}
