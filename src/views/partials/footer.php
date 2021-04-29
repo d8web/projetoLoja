@@ -73,7 +73,7 @@
 
     <script>
         let BASE_URL = '<?=$base;?>';
-        let maxslider = '<?=$maxslider;?>';
+        let maxslider = '<?=!empty($maxslider) ? $maxslider : 0;?>';
     </script>
     <script src="<?=$base;?>/assets/js/jquery-3.6.0.min.js"></script>
     <script src="<?=$base;?>/assets/js/jquery-ui.min.js"></script>
