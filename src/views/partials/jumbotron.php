@@ -17,7 +17,7 @@
                         </div>
                     </div>
                     <div>
-                        <form method="GET" action="">
+                        <form method="GET" action="<?=$base;?>/busca">
                             <div class="input-group border-2 border-secondary rounded-1">
 
                                 <input type="text" name="s" value="<?php echo !empty($search_term) ? $search_term : ''; ?>" class="form-control p-2 border"/>                                

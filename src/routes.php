@@ -9,4 +9,4 @@ $router->get('/busca', 'SearchController@index');
 
 $router->get('/product/{id}', 'ProductController@index');
 
-// Continue to: Otimizando a Estrutura
+// Continue to: Carrinho de compras (1/3)
