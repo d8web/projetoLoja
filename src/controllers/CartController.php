@@ -12,6 +12,18 @@ class CartController extends Controller
     {
         $store = new Store();        
         $products = new Products();
+        $cep = '';
+        $shipping = [];
+
+        if(isset($_POST['cep']) && !empty($_POST['cep'])) {
+            $cep = filter_input(INPUT_POST, 'cep', FILTER_VALIDATE_INT);
+            $shipping = CartHandler::shippingCalculate($cep);
+            $_SESSION['shipping'] = $shipping;
+        }
+
+        if(!empty($_SESSION['shipping'])) {
+            $shipping = $_SESSION['shipping'];
+        }
 
         if(!isset($_SESSION['cart']) || (isset($_SESSION['cart']) && count($_SESSION['cart']) == 0)) {
             $this->redirect('/');
@@ -19,6 +31,7 @@ class CartController extends Controller
         }
 
         $data = $store->getTemplateData();
+        $data['shipping'] = $shipping;
         $data['list'] = CartHandler::getList();
 
         $this->render('cart', $data);
@@ -54,6 +67,13 @@ class CartController extends Controller
             }
         }
 
+        $this->redirect('/cart');
+        exit;
+    }
+
+    public function clean()
+    {
+        $_SESSION['shipping'] = '';
         $this->redirect('/cart');
         exit;
     }

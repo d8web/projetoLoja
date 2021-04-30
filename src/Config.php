@@ -11,6 +11,7 @@ class Config {
     const DB_PASS = '';
 
     const DEFAULT_LANG = 'en';
+    const CEP_ORIGIN = '37245000';
 
     const ERROR_CONTROLLER = 'ErrorController';
     const DEFAULT_ACTION = 'index';

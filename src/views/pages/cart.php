@@ -39,12 +39,58 @@
                             <?=number_format($subtotal, 2, ',', '.');?>
                         </td>
                     </tr>
+                    <tr>
+                        <td colspan="3" align="right">Frete:</td>
+                        <td>
+                            <?php if(isset($shipping['price'])): ?>
+                                <strong>
+                                    <?='R$ '.$shipping['price'];?>
+                                </strong>
+                                <span>(Prazo: <?=$shipping['date'];?> dia<?=$shipping['date'] == '1' ? '' : 's';?>)</span>
+                            <?php else: ?>
+                                <span class="fw-bold mb-2">Digite seu cep</span>
+                                <form method="POST" action="<?=$base;?>/cart">
+                                    <div class="form-group col-md-3 w-100">
+                                        <input type="text" class="form-control mb-2" name="cep" id="cep"/>
+                                        <input type="submit" value="Calcular" class="btn btn-primary"/>
+                                    </div>
+                                </form>
+                            <?php endif; ?>
+                        </td>
+                    </tr>
+                    <?php if(isset($shipping['price'])): ?>
+                        <tr>
+                            <td colspan="3" align="right"></td>
+                            <td>
+                                <a href="<?=$base;?>/clean">Limpar Frete</a>
+                            </td>
+                        </tr>
+                    <?php endif; ?>
+                    <tr>
+                        <td colspan="3" align="right">Total:</td>
+                        <td class="default-color fw-bold">
+                            <?php
+                                $frete = isset($shipping['price']) ? floatval(str_replace(',', '.', $shipping['price'])) : 0;
+                                $total = $subtotal + $frete;
+                                echo number_format($total, 2, ',', '.');
+                            ?>
+                        </td>
+                    </tr>
                 </table>
             </div>
         </div>
-
     </div>
 </section>
+
+<script src="https://unpkg.com/imask"></script>
+<script>
+    IMask(
+        document.getElementById('cep'),
+        {
+            mask: '00000000'
+        }
+    );
+</script>
 
 <?=$render('footer', [
     'maxslider' => $filters['maxslider'] ?? 0,

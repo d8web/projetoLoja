@@ -13,7 +13,7 @@ class Products extends Model
         $array = [];
         $productsImages = new Productsimages();
 
-        $sql = "SELECT name, price FROM products WHERE id = :id";
+        $sql = "SELECT * FROM products WHERE id = :id";
         $sql = $this->pdo->prepare($sql);
         $sql->bindValue(':id', $id);
         $sql->execute();
