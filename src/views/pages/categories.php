@@ -3,21 +3,15 @@
 <?=$render('jumbotron', [
     'categories' => !empty($categories) ? $categories : '',
     'search_term' => !empty($search_term) ? $search_term : '',
-    'category' => !empty($category) ? $category : ''
+    'category' => !empty($category) ? $category : '',
+    'cart_qt' => $cart_qt,
+    'cart_subtotal' => $cart_subtotal
 ]);?>
 
-<?php if(isset($categorie_filter)): ?>
-    <?=$render('menu_categories', [
-        'categories' => !empty($categories) ? $categories : '',
-        'categorie_filter' => $categorie_filter
-    ]);?>
-<?php else: ?>
-    <?=$render('menu_categories', [
-        'categories' => !empty($categories) ? $categories : ''
-    ]);?>
-<?php endif; ?>
-
-
+<?=$render('menu_categories', [
+    'categories' => $categories,
+    'categorie_filter' => $category_filter
+]);?>
 
 <section class="mt-4 border-top border-secondary">
     <div class="container">
@@ -42,11 +36,7 @@
                     <ul class="pagination pagination-md mt-2 mb-5">
                         <?php for($q = 1; $q <= $number_of_pages; $q++): ?>
                             <li class="page-item <?=($current_page==$q)?'active':'';?>">
-                                <a class="page-link" href="<?=$base;?>/?<?php 
-                                        $pag_array = $_GET;
-                                        $pag_array['page'] = $q;
-                                        echo http_build_query($pag_array);
-                                    ?>">
+                                <a class="page-link" href="<?=$base;?>/categories/<?=$id_category;?>?page=<?=$q;?>">
                                     <?=$q;?>
                                 </a>
                             </li>

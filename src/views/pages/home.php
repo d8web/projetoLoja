@@ -3,19 +3,15 @@
 <?=$render('jumbotron', [
     'categories' => !empty($categories) ? $categories : '',
     'search_term' => !empty($search_term) ? $search_term : '',
-    'category' => !empty($category) ? $category : ''
+    'category' => !empty($category) ? $category : '',
+    'cart_qt' => $cart_qt,
+    'cart_subtotal' => $cart_subtotal
 ]);?>
 
-<?php if(isset($categorie_filter)): ?>
-    <?=$render('menu_categories', [
-        'categories' => !empty($categories) ? $categories : '',
-        'categorie_filter' => $categorie_filter
-    ]);?>
-<?php else: ?>
-    <?=$render('menu_categories', [
-        'categories' => !empty($categories) ? $categories : ''
-    ]);?>
-<?php endif; ?>
+<?=$render('menu_categories', [
+    'categories' => $categories,
+    'categorie_filter' => !empty($categorie_filter) ? $categorie_filter : ''
+]);?>
 
 <section class="mt-4 border-top border-secondary mb-5">
     <div class="container">

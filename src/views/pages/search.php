@@ -3,7 +3,9 @@
 <?=$render('jumbotron', [
     'categories' => !empty($categories) ? $categories : '',
     'search_term' => !empty($search_term) ? $search_term : '',
-    'category' => !empty($category) ? $category : ''
+    'category' => !empty($category) ? $category : '',
+    'cart_qt' => $cart_qt,
+    'cart_subtotal' => $cart_subtotal
 ]);?>
 
 <?php if(isset($categorie_filter)): ?>

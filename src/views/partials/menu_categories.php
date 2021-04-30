@@ -25,8 +25,8 @@
             </div>
             <div class="col-sm-12 col-md-7 col-lg-9">
                 <ul class="nav mt-10">
-                
-                    <?php if(isset($categorie_filter)): ?>
+
+                    <?php if(isset($categorie_filter) && (!empty($categorie_filter) && count($categorie_filter) > 0)): ?>
                         <?php foreach($categorie_filter as $item): ?>
                             <li class="nav-item border-end border-secondary">
                                 <a class="nav-link my-color" href="<?=$base;?>/categories/<?=$item['id'];?>">

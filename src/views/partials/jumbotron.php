@@ -46,17 +46,20 @@
                 </div>
             </div>
             <div class="col-lg-3 align-self-center d-flex justify-content-end">
-                <div class="row">
-                    <div class="col-3 align-self-center">
-                        <i class="fas fa-shopping-cart fs-3 default-color"></i>
+                <a href="<?=$base;?>/cart" class="row">
+                    <div class="col-3 d-flex justify-content-center align-items-center cart-item">
+                        <i class="fas fa-shopping-cart fs-1 default-color"></i>
+                        <div class="circle-item">
+                            <?=$cart_qt;?>
+                        </div>
                     </div>
                     <div class="col-9">
                         <div>
                             <?=$this->lang->get("CART");?>
                         </div>
-                        <strong>R$ 400,00</strong>
+                        <strong>R$ <?=number_format($cart_subtotal, 2, ',', '.');?></strong>
                     </div>
-                </div>
+                </a>
             </div>
         </div>
     </div>

@@ -112,6 +112,26 @@ ul {
     outline: none;
 }
 
+.cart-item {
+    position: relative;
+}
+
+.circle-item {
+    position: absolute;
+    content: "";
+    top: 41%;
+    left: 56%;
+    transform: translate(-41%, -56%);
+    width: 17px;
+    height: 17px;
+    background-color: #fff;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
 .my-images {
     max-width: 100%;
     max-height: 100px;
@@ -147,6 +167,10 @@ ul {
 .price-from {
     font-weight: bold;
     color: #999;
+}
+
+.transition {
+    
 }
 
 .price-actual {
