@@ -48,8 +48,6 @@ class CategoriesController extends Controller
             $data['searchTerm'] = '';
             $data['category'] = '';
 
-            $data['categories'] = $categories->getList();
-
             $data['sidebar'] = true;
 
             $this->render('categories', $data);

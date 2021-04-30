@@ -293,7 +293,7 @@ class Products extends Model
 
     public function getOptionsByProductId($id)
     {
-        $options = array();
+        $options = [];
 
 		// Etapa 1 - Pegar os nomes das opções.
 		$sql = "SELECT options FROM products WHERE id = :id";
@@ -318,19 +318,19 @@ class Products extends Model
 			$sql->execute();
 			$options_values = array();
 			if($sql->rowCount() > 0) {
-				foreach($sql->fetchAll() as $op) {
+				foreach($sql->fetchAll(\PDO::FETCH_ASSOC) as $op) {
 					$options_values[$op['id_option']] = $op['p_value'];
 				}
 			}
 
 			// Etapa 3 - Juntar tudo em um único array.
-			foreach($options as $ok => $op) {
-				if(isset($options_values[$op['id']])) {
-					$options[$ok]['value'] = $options_values[$op['id']];
-				} else {
-					$options[$ok]['value'] = '';
-				}
-			}
+            foreach($options as $ok => $op) {
+                if(isset($options_values[$op['id']])) {
+                    $options[$ok]['value'] = $options_values[$op['id']];
+                } else {
+                    $options[$ok]['value'] = '';
+                }
+            }
 
 		}
 

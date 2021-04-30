@@ -75,14 +75,16 @@
             </div>
             <div class="col-md-6">
                 <h2 class="fs-3 mt-5 mb-5"><?=$this->lang->get("SPECIFICATIONS");?></h2>
-                <?php foreach($product_options as $op): ?>
-                    <div class="d-flex">
-                        <div class="default-color fs-6">
-                            <?=$op['name'];?>:
+                <?php if(!empty($product_options)): ?>
+                    <?php foreach($product_options as $op): ?>
+                        <div class="d-flex">
+                            <div class="default-color fs-6">
+                                <?=$op['name'];?>:
+                            </div>
+                            <p class="ms-1 fs-6"><?=$op['value'];?></p>
                         </div>
-                        <p class="ms-1 fs-6"><?=$op['value'];?></p>
-                    </div>
-                <?php endforeach; ?>
+                    <?php endforeach; ?>
+                <?php endif; ?>
             </div>
         </div>
 

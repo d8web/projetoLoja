@@ -1,7 +1,7 @@
 <?=$render('header');?>
 
 <?=$render('jumbotron', [
-    'categories' => !empty($categories) ? $categories : '',
+    'categories' => $categories,
     'search_term' => !empty($search_term) ? $search_term : '',
     'category' => !empty($category) ? $category : '',
     'cart_qt' => $cart_qt,

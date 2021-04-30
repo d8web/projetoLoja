@@ -3,6 +3,7 @@ namespace src\controllers;
 
 use \core\Controller;
 use src\handlers\Store;
+use src\models\Categories;
 use src\models\Filters;
 use \src\models\Products;
 
@@ -12,6 +13,7 @@ class HomeController extends Controller
     {
         $store = new Store();        
         $products = new Products();
+        $categories = new Categories();
         $new_filters = new Filters();
         $data = $store->getTemplateData();
 
@@ -38,6 +40,8 @@ class HomeController extends Controller
         $data['filters'] = $new_filters->getFilters($filters);
         $data['filters_selected'] = $filters;
 
+        $data['categories'] = $categories->getList();
+        
         $data['search_term'] = '';
         $data['category'] = '';
         

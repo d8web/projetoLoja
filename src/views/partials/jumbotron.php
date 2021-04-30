@@ -29,15 +29,15 @@
                                         <option value="<?=$item['id'];?>" <?php echo ($category==$item['id']?'selected="selected"':'');?>>
                                             <?=$item['name'];?>
                                         </option>
+                                        <?php if(count($item['subs']) > 0): ?>
+                                            <?=$render('search_subcategory', [
+                                                'subs' => $item['subs'],
+                                                'level' => 1,
+                                                'category' => !empty($category) ? $category : ''
+                                            ]);?>
+                                        <?php endif; ?>
                                     <?php endforeach; ?>
 
-                                    <?php if(count($item['subs']) > 0): ?>
-                                        <?=$render('search_subcategory', [
-                                            'subs' => $item['subs'],
-                                            'level' => 1,
-                                            'category' => !empty($category) ? $category : ''
-                                        ]);?>
-                                    <?php endif; ?>
                                 </select>
                                 <input type="submit" class="btn bg-color-default p-2 border" value="Pesquisar"/>
                             </div>

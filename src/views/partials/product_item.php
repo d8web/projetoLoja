@@ -20,9 +20,9 @@
             <?php endif; ?>
         </div>
         <div class="product-image d-flex justify-content-center">
-            <img src="<?=$base;?>/media/products/<?=$images[0]['url'];?>" width="70%" alt="">
+            <img src="<?=$base;?>/media/products/<?=$images[0]['url'];?>" width="70%" alt=""/>
         </div>
-        <div class="product-name"><?=$name;?></div>
+        <div class="product-name mt-3"><?=$name;?></div>
         <div class="product-brand"><?=$brand_name;?></div>
         <div class="d-flex justify-content-between pt-3 pb-1">
             <div class="price-from">
