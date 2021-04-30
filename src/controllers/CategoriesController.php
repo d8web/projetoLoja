@@ -23,7 +23,7 @@ class CategoriesController extends Controller
         if(!empty($data['category_name'])) {
             $currentPage = 1;
             $offset = 0;
-            $limit = 3;
+            $limit = 12;
 
             if(!empty($_GET['page'])) {
                 $currentPage = $_GET['page'];
@@ -31,14 +31,14 @@ class CategoriesController extends Controller
 
             $offset = ($currentPage * $limit) - $limit;
 
-            $filters = array('category'=>$atts['id']);
+            $filters = ['category'=>$atts['id']];
 
             $data['category_filter'] = $categories->getCategoryTree($atts['id']);
 
             $data['list'] = $products->getList($offset, $limit, $filters);
-            $data['totalItems'] = $products->getTotal($filters);
-            $data['number_of_pages'] = ceil($data['totalItems'] / $limit);
-            $data['currentPage'] = $currentPage;
+            $data['total_items'] = $products->getTotal($filters);
+            $data['number_of_pages'] = ceil($data['total_items'] / $limit);
+            $data['current_page'] = $currentPage;
 
             $data['id_category'] = $atts['id'];
 
