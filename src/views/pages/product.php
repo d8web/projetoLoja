@@ -1,6 +1,6 @@
 <?=$render('header');?>
 
-<section class="mt-5 pb-5 border-bottom border-secondary">
+<section class="mt-5 pb-5 border-bottom">
     <div class="container">
         <div class="row">
             <div class="col-md-6 mb-4">

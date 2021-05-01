@@ -1,15 +1,15 @@
-<aside>
+<aside class="p-2 border-end px-4">
 
     <div class="w-100">
-        <h2 class="fs-4 mt-2">
+        <h2 class="fs-4 m-0">
             <?=$this->lang->get("FILTER");?>
         </h2>
-        <div class="border border-secondary p-2" id="filter-area">
+        <div class="" id="filter-area">
             <form action="" method="get">
                 <!-- Filter Box  -->
                 <!-- Filter Marcas [Brands]  -->
-                <div class="border-bottom border-secondary mb-2">
-                    <h3 class="fs-5 default-color border-bottom border-secondary pb-2">
+                <div class="mb-2">
+                    <h3 class="fs-5 default-color pb-2 pt-3">
                         <?=$this->lang->get("BRANDS");?>
                     </h3>
                     <div class="mt-2 mb-2">
@@ -32,8 +32,8 @@
 
                 <!-- Filter Box  -->
                 <!-- Filter Preço [Price]  -->
-                <div class="border-bottom border-secondary mb-2">
-                    <h3 class="fs-5 default-color border-bottom border-secondary pb-2">
+                <div class="mb-2">
+                    <h3 class="fs-5 default-color pb-2 pt-3">
                         <?=$this->lang->get("PRICE");?>
                     </h3>
                     <div class="mt-2 mb-3">
@@ -47,11 +47,11 @@
 
                 <!-- Filter Box  -->
                 <!-- Filter Estrelas [Rating]  -->
-                <div class="border-bottom border-secondary mb-2 pb-1">
-                    <h3 class="fs-5 default-color border-bottom border-secondary pb-2">
+                <div class="mb-2 pb-1">
+                    <h3 class="fs-5 default-color pb-2 pt-3">
                         <?=$this->lang->get("RATING");?>
                     </h3>
-                    <div class="mt-2">
+                    <div class="m-0">
                         <div class="d-flex flex-column">
                             <!-- Zero estrelas -->
                             <div class="d-flex justify-content-between">
@@ -149,8 +149,8 @@
 
                 <!-- Filter Box  -->
                 <!-- Filter Promoção [Sale]  -->
-                <div class="border-bottom border-secondary mb-2">
-                    <h3 class="fs-5 default-color border-bottom border-secondary pb-2">
+                <div class="mb-2">
+                    <h3 class="fs-5 default-color pb-2 pt-3">
                         <?=$this->lang->get("SALE");?>
                     </h3>
                     <div class="mt-2 mb-2">
@@ -169,8 +169,8 @@
 
                 <!-- Filter Box  -->
                 <!-- Filter Opções [Options]  -->
-                <div class="border-bottom border-secondary mb-2">
-                    <h3 class="fs-5 default-color border-bottom border-secondary pb-2">
+                <div class="mb-2">
+                    <h3 class="fs-5 default-color border-secondary pb-2 pt-3">
                         <?=$this->lang->get("OPTIONS");?>
                     </h3>
                     <div class="mt-2 mb-2">
@@ -195,8 +195,8 @@
         </div>
     </div>
 
-    <div class="w-100">
-        <h2 class="fs-4 mt-2">
+    <div class="w-100 mt-5">
+        <h2 class="fs-4">
             <?=$this->lang->get("FEATUREDPRODUCTS");?>
         </h2>
         <div class="d-flex flex-column">

@@ -119,11 +119,11 @@ ul {
 .circle-item {
     position: absolute;
     content: "";
-    top: 41%;
+    top: 42%;
     left: 56%;
-    transform: translate(-41%, -56%);
-    width: 17px;
-    height: 17px;
+    transform: translate(-42%, -56%);
+    width: 15.5px;
+    height: 15.5px;
     background-color: #fff;
     border-radius: 50%;
     display: flex;
@@ -167,10 +167,6 @@ ul {
 .price-from {
     font-weight: bold;
     color: #999;
-}
-
-.transition {
-    
 }
 
 .price-actual {
@@ -221,6 +217,15 @@ ul {
 
 .margin-1 {
     margin-top: 1px;
+}
+
+.no-border {
+    border: none !important;
+    border-color: transparent;
+}
+
+.navbar-toggler-icon {
+    color: #333 !important;
 }
 
 @media screen and (max-width: 440px) {

@@ -10,7 +10,7 @@ class CartController extends Controller
 {
     public function cart()
     {
-        $store = new Store();        
+        $store = new Store();
         $products = new Products();
         $cep = '';
         $shipping = [];
@@ -74,6 +74,25 @@ class CartController extends Controller
     public function clean()
     {
         $_SESSION['shipping'] = '';
+        $this->redirect('/cart');
+        exit;
+    }
+
+    public function payment()
+    {
+        if(!empty($_POST['payment_type'])) {
+            $payment_type = filter_input(INPUT_POST, 'payment_type');
+
+            switch($payment_type)
+            {
+                case 'checkout_transparent':
+                    $this->redirect('/pscktransparent');
+                    exit;
+                break;
+            }
+
+        }
+        
         $this->redirect('/cart');
         exit;
     }

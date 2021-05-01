@@ -1,6 +1,6 @@
 <?php foreach($list as $item): ?>
     <!-- Link Product -->
-    <a href="<?=$base;?>/product/<?=$item['id'];?>" class="d-flex justify-content-between text-dark border-bottom border-secondary p-2 mobile-flex mb-2">
+    <a href="<?=$base;?>/product/<?=$item['id'];?>" class="d-flex justify-content-between border-bottom pt-3 pb-3 mobile-flex mb-2">
         <div class="d-flex flex-column flex-fill align-self-center">
             <h2 class="fs-6 default-color"><?=$item['name'];?></h2>
             <div class="d-flex">

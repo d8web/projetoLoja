@@ -13,7 +13,7 @@
     'categorie_filter' => $category_filter
 ]);?>
 
-<section class="mt-4 border-top border-secondary">
+<section class="mt-4 border-top">
     <div class="container">
     <div class="row">
             <?php if(isset($sidebar)): ?>

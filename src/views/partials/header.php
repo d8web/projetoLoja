@@ -14,10 +14,10 @@
 <body>
 
 <header>
-    <nav class="navbar navbar-expand-lg border-bottom border-secondary">
+    <nav class="navbar navbar-expand-lg border-bottom">
         <div class="container">
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
+                <i class="fa fa-bars text-muted"></i>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavDropdown">
                 <ul class="navbar-nav">

@@ -14,4 +14,8 @@ $router->post('/cart', 'CartController@cart');
 $router->post('/cart/add', 'CartController@action');
 $router->get('/cart/del/{id}', 'CartController@del');
 
+$router->post('/payment_redirect', 'CartController@payment');
+
 $router->get('/clean', 'CartController@clean');
+
+$router->get('/pscktransparent', 'PagseguroController@checkoutTransparent');
