@@ -2,7 +2,9 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-3 d-flex align-items-center">
-                <a href="<?=$base;?>" class="fs-1 m-0 default-color fw-bold">Ecommerce</a>
+                <a href="<?=$base;?>" class="fs-1 m-0 default-color fw-bold">
+                    <img src="<?=$base;?>/assets/images/logo.png" alt="logo" class="w-75"/>
+                </a>
             </div>
             <div class="col-lg-6 align-self-center">
                 <div class="flex flex-column">
@@ -21,7 +23,7 @@
                             <div class="input-group border-2 rounded-1">
 
                                 <input type="text" name="s" value="<?php echo !empty($search_term) ? $search_term : ''; ?>" class="form-control p-2 border"/>                                
-                                <select name="category" class="p-2 no-outline border">
+                                <select name="category" class="my-padding-form no-outline border">
                                     <option value="">
                                         <?=$this->lang->get("ALLCATEGORIES");?>
                                     </option>
@@ -39,7 +41,7 @@
                                     <?php endforeach; ?>
 
                                 </select>
-                                <input type="submit" class="btn bg-color-default p-2 border" value="Pesquisar"/>
+                                <input type="submit" class="btn bg-color-default my-padding-form" value="Pesquisar"/>
                             </div>
                         </form>
                     </div>
@@ -54,7 +56,7 @@
                         </div>
                     </div>
                     <div class="col-9">
-                        <div>
+                        <div class="text-dark">
                             <?=$this->lang->get("CART");?>
                         </div>
                         <strong>R$ <?=number_format($cart_subtotal, 2, ',', '.');?></strong>

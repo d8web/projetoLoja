@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="<?=$base;?>/assets/css/jquery-ui.structure.min.css"/>
     <link rel="stylesheet" href="<?=$base;?>/assets/css/jquery-ui.theme.min.css"/>
     <link rel="stylesheet" href="<?=$base;?>/assets/css/style.css"/>
+    <link rel="shortcut icon" href="<?=$base;?>/assets/images/favicon.ico" type="image/x-icon">
     <title>Ecommerce</title>
 </head>
 <body>

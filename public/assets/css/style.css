@@ -92,13 +92,13 @@ ul {
 }
 
 .product-item {
-    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 12%);
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 10%);
     transition: all .2s ease-in-out;
 }
 
 .product-item:hover {
-    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 10%);
-    background-color: var(--white);
+    box-shadow: 0 1px 2px 0 rgb(0 0 0 / 12%);
+    background-color: var(--bg-color);
 }
 
 .product-tags {
@@ -151,6 +151,11 @@ ul {
     width: 35px;
     text-align: center;
     outline: none;
+}
+
+.my-padding-form {
+    padding: 0 16px;
+    cursor: pointer;
 }
 
 .product-name {

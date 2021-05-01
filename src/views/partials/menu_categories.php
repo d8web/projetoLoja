@@ -36,6 +36,30 @@
                         <?php endforeach; ?>
                     <?php endif; ?>
 
+                    <li class="nav-item border-end border-secondary">
+                        <a class="nav-link my-color" href="<?=$base;?>/categories/<?=$item['id'];?>">
+                            Gamer
+                        </a>
+                    </li>
+
+                    <li class="nav-item border-end border-secondary">
+                        <a class="nav-link my-color" href="<?=$base;?>/categories/<?=$item['id'];?>">
+                            Monitor
+                        </a>
+                    </li>
+
+                    <li class="nav-item border-end border-secondary">
+                        <a class="nav-link my-color" href="<?=$base;?>/categories/<?=$item['id'];?>">
+                            Full HD
+                        </a>
+                    </li>
+
+                    <li class="nav-item border-end border-secondary">
+                        <a class="nav-link my-color" href="<?=$base;?>/categories/<?=$item['id'];?>">
+                            28 Polegadas
+                        </a>
+                    </li>
+
                 </ul>
             </div>
         </div>

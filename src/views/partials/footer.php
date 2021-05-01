@@ -33,7 +33,7 @@
             </div>
         </div>
 
-        <div class="row mt-3">
+        <div class="row mt-5">
             <div class="col-sm-6 col-md-7 align-self-center m-auto">
                 
                 <!-- Begin Mailchimp Signup Form -->
@@ -51,19 +51,97 @@
             </div>
         </div>
 
+        <div class="w-100 mt-5 mb-4">
+            <div class="row">
+                <div class="col-md-6 col-lg-3 mt-5 mb-3 d-flex align-items-center justify-content-center">
+                    <a href="<?=$base;?>" class="fs-1 m-0 default-color fw-bold">
+                        <img src="<?=$base;?>/assets/images/logo.png" class="w-75" alt="logo"/>
+                    </a>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex flex-column text-center mt-5">
+                    <h4>Menu</h4>
+                    <ul class="p-0">
+                        <li class="mt-2 mb-2">
+                            <a href="">Information</a>
+                        </li>
+                        <li class="mt-2 mb-2">
+                            <a href="">Information</a>
+                        </li>
+                        <li class="mt-2 mb-2">
+                            <a href="">Information</a>
+                        </li>
+                        <li class="mt-2 mb-2">
+                            <a href="">Information</a>
+                        </li>
+                        <li class="mt-2 mb-2">
+                            <a href="">Information</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex flex-column text-center mt-5">
+                    <h4>Menu</h4>
+                    <ul class="p-0">
+                        <li class="mt-2 mb-2">
+                            <a href="">Information</a>
+                        </li>
+                        <li class="mt-2 mb-2">
+                            <a href="">Information</a>
+                        </li>
+                        <li class="mt-2 mb-2">
+                            <a href="">Information</a>
+                        </li>
+                        <li class="mt-2 mb-2">
+                            <a href="">Information</a>
+                        </li>
+                        <li class="mt-2 mb-2">
+                            <a href="">Information</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-md-6 col-lg-3 d-flex flex-column text-center mt-5">
+                    <h4>Menu</h4>
+                    <ul class="p-0">
+                        <li class="mt-2 mb-2">
+                            <a href="">Information</a>
+                        </li>
+                        <li class="mt-2 mb-2">
+                            <a href="">Information</a>
+                        </li>
+                        <li class="mt-2 mb-2">
+                            <a href="">Information</a>
+                        </li>
+                        <li class="mt-2 mb-2">
+                            <a href="">Information</a>
+                        </li>
+                        <li class="mt-2 mb-2">
+                            <a href="">Information</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
         <div class="footer-end mt-5 border-top border-secondary pt-3 pb-3">
             <div class="row">
-                <div class="col-sm-6">
+                <div class="col-sm-6 d-flex align-items-center">
                     <h6 class="fs-6 m-0">
                         <?=$this->lang->get("ALLRIGHTRESERVED");?>
                     </h6>
                 </div>
                 <div class="col-sm-6 text-end">
                     <div class="row">
-                        <div class="col-3">Card</div>
-                        <div class="col-3">Card</div>
-                        <div class="col-3">Card</div>
-                        <div class="col-3">Card</div>
+                        <div class="col-3">
+                            <img src="<?=$base;?>/assets/images/visa.png" width="50"/>
+                        </div>
+                        <div class="col-3">
+                            <img src="<?=$base;?>/assets/images/visa.png" width="50"/>
+                        </div>
+                        <div class="col-3">
+                            <img src="<?=$base;?>/assets/images/visa.png" width="50"/>
+                        </div>
+                        <div class="col-3">
+                            <img src="<?=$base;?>/assets/images/visa.png" width="50"/>
+                        </div>
                     </div>
                 </div>
             </div>
