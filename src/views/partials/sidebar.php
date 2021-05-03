@@ -1,4 +1,4 @@
-<aside class="mt-4">
+<aside class="mt-4 p-3">
 
     <div class="w-100">
         <h2 class="fs-4 m-0">
