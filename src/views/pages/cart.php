@@ -1,6 +1,6 @@
 <?=$render('header');?>
 
-<section class="mt-4 border-bottom border-secondary mb-5 pb-3">
+<section class="mt-4 mb-5 pb-3">
     <div class="container">
         
         <h2 class="mb-5">Carrinho</h2>

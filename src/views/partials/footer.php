@@ -34,7 +34,7 @@
         </div>
 
         <div class="row mt-5">
-            <div class="col-sm-6 col-md-7 align-self-center m-auto">
+            <div class="col-sm-12 col-md-8 align-self-center m-auto">
                 
                 <!-- Begin Mailchimp Signup Form -->
                 <form action="https://gmail.us1.list-manage.com/subscribe/post?u=c8a61506e6121a4b59a6f9b2c&amp;id=619357e020" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" novalidate>

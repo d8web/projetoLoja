@@ -233,6 +233,46 @@ ul {
     color: #333 !important;
 }
 
+@media screen and (max-width: 992px) {
+    .responsive-logo {
+        margin-top: 20px;
+        justify-content: center;
+    }
+    .responsive-form-jumbotron {
+        text-align: center; margin: 20px 0px;
+    }
+
+    #responsive-input {
+        width: 100%;
+        margin: 5px 0px;
+    }
+
+    .responsive-input {
+        width: 100%;
+        padding: 10px;
+        border-radius: 5px;
+    }
+
+    .responsive-cart {
+        margin: 0;
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .margin-top {
+        margin-right: 20px !important;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .my-flex-jumbotron {
+        justify-content: center !important;
+    }
+}
+
 @media screen and (max-width: 440px) {
     .mobile-flex {
         flex-direction: column !important;
