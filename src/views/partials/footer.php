@@ -1,4 +1,4 @@
-<footer class="pt-5 border-top">
+<footer class="pt-5">
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-4">
@@ -34,14 +34,14 @@
         </div>
 
         <div class="row mt-5">
-            <div class="col-sm-12 col-md-8 align-self-center m-auto">
+            <div class="col-sm-12 col-md-8 col-ls-7 col-xl-6 align-self-center m-auto">
                 
                 <!-- Begin Mailchimp Signup Form -->
                 <form action="https://gmail.us1.list-manage.com/subscribe/post?u=c8a61506e6121a4b59a6f9b2c&amp;id=619357e020" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" novalidate>
-                    <div class="input-group mt-5 mb-4">                    
-                    <input type="email" value="" name="EMAIL" class="required email form-control p-3" placeholder="<?=$this->lang->get("SUBSCRIBETEXT");?>" id="mce-EMAIL">
+                    <div class="input-group mt-5 mb-4">
+                    <input type="email" value="" name="EMAIL" class="required email form-control my-padding-input" placeholder="<?=$this->lang->get("SUBSCRIBETEXT");?>" id="mce-EMAIL">
                     <input type="hidden" name="b_c8a61506e6121a4b59a6f9b2c_619357e020" tabindex="-1" value="">
-                    <input type="submit" value="<?=$this->lang->get("SUBSCRIBEBUTTON");?>" name="subscribe" id="mc-embedded-subscribe" class="button btn bg-color-default fs-6">
+                    <input type="submit" value="<?=$this->lang->get("SUBSCRIBEBUTTON");?>" name="subscribe" id="mc-embedded-subscribe" class="button btn bg-color-default my-padding-input">
                     </div>
                 </form>
 
@@ -55,7 +55,7 @@
             <div class="row">
                 <div class="col-md-6 col-lg-3 mt-5 mb-3 d-flex align-items-center justify-content-center">
                     <a href="<?=$base;?>" class="fs-1 m-0 default-color fw-bold">
-                        <img src="<?=$base;?>/assets/images/logo.png" class="w-75" alt="logo"/>
+                        <img src="<?=$base;?>/assets/images/logo.png" class="w-100" alt="logo"/>
                     </a>
                 </div>
                 <div class="col-md-6 col-lg-3 d-flex flex-column text-center mt-5">

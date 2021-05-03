@@ -19,7 +19,7 @@
     ]);?>
 <?php endif; ?>
 
-<section class="mt-4 border-top">
+<section class="mt-4">
     <div class="container">
         
         <div class="row">

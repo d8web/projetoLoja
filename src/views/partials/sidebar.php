@@ -1,4 +1,4 @@
-<aside class="p-2 border-end px-4">
+<aside class="mt-4">
 
     <div class="w-100">
         <h2 class="fs-4 m-0">

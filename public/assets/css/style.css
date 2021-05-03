@@ -233,6 +233,18 @@ ul {
     color: #333 !important;
 }
 
+.my-padding-input {
+    padding: 13px;
+}
+
+.my-icon-font-size {
+    font-size: 20px !important;
+}
+
+.responsive-input {
+    padding: 5px;
+}
+
 @media screen and (max-width: 992px) {
     .responsive-logo {
         margin-top: 20px;
@@ -279,6 +291,11 @@ ul {
         justify-content: center !important;
         align-items: center !important;
         text-align: center !important;
+    }
+
+    .my-padding-input {
+        margin-bottom: 10px;
+        width: 100% !important;
     }
 
     .mobile-margin {

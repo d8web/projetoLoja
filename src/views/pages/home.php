@@ -13,7 +13,7 @@
     'categorie_filter' => !empty($categorie_filter) ? $categorie_filter : ''
 ]);?>
 
-<section class="mt-4 border-top mb-5">
+<section class="mt-4 mb-5">
     <div class="container">
         
         <div class="row">
