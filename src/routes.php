@@ -19,5 +19,3 @@ $router->post('/payment_redirect', 'CartController@payment');
 $router->get('/clean', 'CartController@clean');
 
 $router->get('/pscktransparent', 'PagseguroController@checkoutTransparent');
-
-// Continue to: Integração Pagseguro - Iniciando Pagamento
