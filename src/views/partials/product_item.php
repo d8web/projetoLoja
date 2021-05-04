@@ -19,19 +19,21 @@
                 </div>
             <?php endif; ?>
         </div>
-        <div class="product-image d-flex justify-content-center">
-            <img src="<?=$base;?>/media/products/<?=$images[0]['url'];?>" width="70%" alt=""/>
+        <div class="product-image d-flex justify-content-center align-items-center">
+            <img src="<?=$base;?>/media/products/<?=$images[0]['url'];?>" alt=""/>
         </div>
-        <div class="product-name mt-3"><?=$name;?></div>
-        <div class="product-brand"><?=$brand_name;?></div>
-        <div class="d-flex justify-content-between pt-3 pb-1">
-            <div class="price-from">
-                <?php if($price_from != '0'): ?>
-                    R$ <?=number_format($price_from, 2, ',', '.');?>
-                <?php endif; ?>
-            </div>
-            <div class="price-actual">
-                R$ <?=number_format($price, 2, ',', '.');?>
+        <div class="product-info-box">
+            <div class="product-name"><?=$name;?></div>
+            <div class="product-brand"><?=$brand_name;?></div>
+            <div class="d-flex justify-content-between pt-3 pb-1">
+                <div class="price-from">
+                    <?php if($price_from != '0'): ?>
+                        R$ <?=number_format($price_from, 2, ',', '.');?>
+                    <?php endif; ?>
+                </div>
+                <div class="price-actual">
+                    R$ <?=number_format($price, 2, ',', '.');?>
+                </div>
             </div>
         </div>
     </a>
