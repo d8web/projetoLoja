@@ -2,7 +2,7 @@
     <div class="container">
         <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-4">
-                <h2 class="fs-4 mt-2 text-responsive-footer">
+                <h2 class="fs-4 mb-4 text-responsive-footer">
                     <?=$this->lang->get("FEATUREDPRODUCTS");?>
                 </h2>
                 <div class="d-flex flex-column">
@@ -12,7 +12,7 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-4">
-                <h2 class="fs-4 mt-2 text-responsive-footer">
+                <h2 class="fs-4 mb-4 text-responsive-footer">
                     <?=$this->lang->get("ONSALEPRODUCTS");?>
                 </h2>
                 <div class="d-flex flex-column">
@@ -22,7 +22,7 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-4">
-                <h2 class="fs-4 mt-2 text-responsive-footer">
+                <h2 class="fs-4 mb-4 text-responsive-footer">
                     <?=$this->lang->get("TOPRATEDPRODUCTS");?>
                 </h2>
                 <div class="d-flex flex-column">
@@ -32,7 +32,7 @@
                 </div>
             </div>
             <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-4">
-                <h2 class="fs-4 mt-2 text-responsive-footer">
+                <h2 class="fs-4 mb-4 text-responsive-footer">
                     <?=$this->lang->get("NEWPRODUCTS");?>
                 </h2>
                 <div class="d-flex flex-column">
