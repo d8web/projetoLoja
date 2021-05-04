@@ -247,7 +247,7 @@ ul {
 
 @media screen and (max-width: 992px) {
     .responsive-logo {
-        margin-top: 20px;
+        margin: 20px 0px;
         justify-content: center;
     }
     .responsive-form-jumbotron {
@@ -282,6 +282,19 @@ ul {
 @media screen and (max-width: 1200px) {
     .my-flex-jumbotron {
         justify-content: center !important;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .text-responsive-footer {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+    .text-responsive {
+        width: 100%;
+        text-align: center;
+        margin-bottom: 8px;
     }
 }
 

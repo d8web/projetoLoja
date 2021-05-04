@@ -198,7 +198,7 @@
     </div>
 
     <div class="w-100 mt-5">
-        <h2 class="fs-4">
+        <h2 class="fs-4 text-responsive-footer">
             <?=$this->lang->get("FEATUREDPRODUCTS");?>
         </h2>
         <div class="d-flex flex-column">

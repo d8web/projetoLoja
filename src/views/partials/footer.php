@@ -1,8 +1,8 @@
 <footer class="pt-5">
     <div class="container">
         <div class="row">
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <h2 class="fs-5 mt-2">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-4">
+                <h2 class="fs-4 mt-2 text-responsive-footer">
                     <?=$this->lang->get("FEATUREDPRODUCTS");?>
                 </h2>
                 <div class="d-flex flex-column">
@@ -11,8 +11,8 @@
                     ]);?>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <h2 class="fs-5 mt-2">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-4">
+                <h2 class="fs-4 mt-2 text-responsive-footer">
                     <?=$this->lang->get("ONSALEPRODUCTS");?>
                 </h2>
                 <div class="d-flex flex-column">
@@ -21,9 +21,19 @@
                     ]);?>
                 </div>
             </div>
-            <div class="col-sm-12 col-md-6 col-lg-4">
-                <h2 class="fs-5 mt-2">
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-4">
+                <h2 class="fs-4 mt-2 text-responsive-footer">
                     <?=$this->lang->get("TOPRATEDPRODUCTS");?>
+                </h2>
+                <div class="d-flex flex-column">
+                    <?=$render('widget', [
+                        'list' => $widget_toprated
+                    ]);?>
+                </div>
+            </div>
+            <div class="col-sm-12 col-md-6 col-lg-4 col-xl-3 p-4">
+                <h2 class="fs-4 mt-2 text-responsive-footer">
+                    <?=$this->lang->get("NEWPRODUCTS");?>
                 </h2>
                 <div class="d-flex flex-column">
                     <?=$render('widget', [
@@ -44,9 +54,7 @@
                     <input type="submit" value="<?=$this->lang->get("SUBSCRIBEBUTTON");?>" name="subscribe" id="mc-embedded-subscribe" class="button btn bg-color-default my-padding-input">
                     </div>
                 </form>
-
                 <!--End mc_embed_signup-->
-
                 
             </div>
         </div>
@@ -124,22 +132,22 @@
         <div class="footer-end mt-5 border-top border-secondary pt-3 pb-3">
             <div class="row">
                 <div class="col-sm-6 d-flex align-items-center">
-                    <h6 class="fs-6 m-0">
+                    <h6 class="fs-6 mb-1 mt-1 text-responsive">
                         <?=$this->lang->get("ALLRIGHTRESERVED");?>
                     </h6>
                 </div>
-                <div class="col-sm-6 text-end">
+                <div class="col-sm-6 text-end mb-1 mt-1">
                     <div class="row">
-                        <div class="col-3">
+                        <div class="col-3 p-0">
                             <img src="<?=$base;?>/assets/images/visa.png" width="50"/>
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 p-0">
                             <img src="<?=$base;?>/assets/images/visa.png" width="50"/>
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 p-0">
                             <img src="<?=$base;?>/assets/images/visa.png" width="50"/>
                         </div>
-                        <div class="col-3">
+                        <div class="col-3 p-0">
                             <img src="<?=$base;?>/assets/images/visa.png" width="50"/>
                         </div>
                     </div>
