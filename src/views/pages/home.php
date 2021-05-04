@@ -36,7 +36,7 @@
                         <?php endforeach; ?>
                     </div>
                     
-                    <ul class="pagination pagination-md mt-2 mb-5">
+                    <ul class="pagination pagination-md mt-2 mb-5 my-page-center">
                         <?php for($q = 1; $q <= $number_of_pages; $q++): ?>
                             <li class="page-item <?=($current_page==$q)?'active':'';?>">
                                 <a class="page-link" href="<?=$base;?>/?<?php 
