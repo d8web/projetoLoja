@@ -22,7 +22,9 @@
                     <?=$render('sidebar', [
                         'filters' => $filters,
                         'filters_selected' => $filters_selected,
-                        'widget_featured1' => $widget_featured1
+                        'widget_featured1' => $widget_featured1,
+                        'search_term' => $search_term,
+                        'category' => $category
                     ]);?>
                 </div>
                 <div class="col-sm-12 col-md-7 col-lg-9">

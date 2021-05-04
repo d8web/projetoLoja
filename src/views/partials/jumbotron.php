@@ -19,7 +19,7 @@
                         </div>
                     </div>
                     <div>
-                        <form method="GET" action="<?=$base;?>/busca">
+                        <form method="GET" action="<?=$base;?>">
                             <div class="input-group border-2 rounded-1">
 
                                 <input type="search"

@@ -31,7 +31,11 @@ class CategoriesController extends Controller
 
             $offset = ($currentPage * $limit) - $limit;
 
-            $filters = ['category'=>$atts['id']];
+            $filters = [];
+            if(!empty($_GET['filter']) && is_array($_GET['filter'])) {
+                $filters = $_GET['filter'];
+            }
+            $filters['category'] = $atts['id'];
 
             $data['category_filter'] = $categories->getCategoryTree($atts['id']);
 
@@ -49,6 +53,7 @@ class CategoriesController extends Controller
             $data['category'] = '';
 
             $data['sidebar'] = true;
+
 
             $this->render('categories', $data);
         } else {

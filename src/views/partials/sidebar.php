@@ -6,6 +6,8 @@
         </h2>
         <div class="" id="filter-area">
             <form action="" method="get">
+            <input type="hidden" name="s" value="<?=$search_term ?? '';?>"/>
+            <input type="hidden" name="category" value="<?=$category ?? '';?>"/>
                 <!-- Filter Box  -->
                 <!-- Filter Marcas [Brands]  -->
                 <div class="mb-2">

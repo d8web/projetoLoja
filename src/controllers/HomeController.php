@@ -22,6 +22,12 @@ class HomeController extends Controller
             $filters = $_GET['filter'];
         }
 
+        $search_term = (isset($_GET['s'])) ? filter_input(INPUT_GET, 's') : '';
+        $category = (isset($_GET['category'])) ? filter_input(INPUT_GET, 'category') : '';
+
+        $filters['search_term'] = $search_term;
+        $filters['category'] = $category;
+
         $current_page = 1;
         $offset = 0;
         $limit = 12;
@@ -42,8 +48,8 @@ class HomeController extends Controller
 
         $data['categories'] = $categories->getList();
         
-        $data['search_term'] = '';
-        $data['category'] = '';
+        $data['search_term'] = $search_term;
+        $data['category'] = $category;
         
         $data['sidebar'] = true;
 
