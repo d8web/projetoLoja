@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 29-Abr-2021 às 14:39
+-- Tempo de geração: 06-Maio-2021 às 16:06
 -- Versão do servidor: 10.4.18-MariaDB
 -- versão do PHP: 7.4.16
 
@@ -37,10 +37,11 @@ CREATE TABLE `brands` (
 --
 
 INSERT INTO `brands` (`id`, `name`) VALUES
-(1, 'LG'),
+(1, 'AMD'),
 (2, 'Samsung'),
-(3, 'AOC'),
-(4, 'Apple');
+(3, 'Asus'),
+(4, 'Apple'),
+(6, 'Microsoft');
 
 -- --------------------------------------------------------
 
@@ -64,7 +65,9 @@ INSERT INTO `categories` (`id`, `sub`, `name`) VALUES
 (3, 2, 'Headphones'),
 (4, 2, 'Microfones'),
 (5, 3, 'Com Fio'),
-(6, 3, 'Sem Fio');
+(6, 3, 'Sem Fio'),
+(7, NULL, 'Tvs'),
+(8, NULL, 'Tablet');
 
 -- --------------------------------------------------------
 
@@ -132,26 +135,33 @@ CREATE TABLE `products` (
   `sale` tinyint(1) NOT NULL,
   `bestseller` tinyint(1) NOT NULL,
   `new_product` tinyint(1) NOT NULL,
-  `options` varchar(200) DEFAULT NULL
+  `options` varchar(200) DEFAULT NULL,
+  `weight` float NOT NULL,
+  `width` float NOT NULL,
+  `height` float NOT NULL,
+  `length` float NOT NULL,
+  `diameter` float NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `products`
 --
 
-INSERT INTO `products` (`id`, `id_category`, `id_brand`, `name`, `description`, `stock`, `price`, `price_from`, `rating`, `featured`, `sale`, `bestseller`, `new_product`, `options`) VALUES
-(1, 1, 1, 'Monitor LG led', 'Ut id elit enim. Phasellus luctus ex ipsum, et sagittis erat commodo eu. Vivamus pretium dignissim risus, eget sollicitudin velit malesuada a. Nulla pellentesque mi neque, quis convallis sapien sagittis vitae.', 10, 499, 599, 4, 1, 1, 1, 0, '1,2,4'),
-(2, 2, 2, 'Headset sem fio', 'Alguma outra descrição', 10, 399, 999, 0, 1, 1, 1, 0, '1,2'),
-(3, 1, 2, 'Smart Tv', 'Alguma outra descrição', 10, 599, 699, 2, 0, 0, 0, 1, '1,4'),
-(4, 1, 3, 'Monitor Ultrawide', 'Alguma outra descrição', 10, 779, 900, 3, 0, 0, 0, 0, '2'),
-(5, 1, 1, 'Monitor Tuf gaming', 'Alguma outra descrição', 10, 299, 499, 5, 0, 0, 1, 1, '1,2'),
-(6, 2, 3, 'Monitor Antireflexivo', 'Alguma outra descrição', 10, 699, 0, 0, 1, 0, 0, 0, '2,4'),
-(7, 1, 3, 'Tablet Irado', 'Alguma outra descrição', 10, 889, 999, 0, 1, 0, 0, 0, '1,4'),
-(8, 6, 1, 'Monitor Full HD', 'Alguma outra descrição', 10, 599, 699, 4, 0, 0, 0, 0, '2'),
-(9, 1, 1, 'Monitor Curvo', 'Monitor lindo 19 polegadas', 10, 900, 1200, 0, 0, 1, 0, 1, '1,4'),
-(10, 1, 1, 'Monitor 4k', 'Lindo monitor gamer 4k', 5, 1200, 1500, 5, 1, 0, 1, 0, '1,2'),
-(12, 2, 3, 'Monitor 4k', 'Alguma outra descrição', 10, 699, 0, 0, 1, 0, 0, 0, '2,4'),
-(13, 1, 1, 'Monitor HD', 'Lindo monitor gamer HD', 5, 1200, 1500, 5, 1, 0, 1, 0, '1,2');
+INSERT INTO `products` (`id`, `id_category`, `id_brand`, `name`, `description`, `stock`, `price`, `price_from`, `rating`, `featured`, `sale`, `bestseller`, `new_product`, `options`, `weight`, `width`, `height`, `length`, `diameter`) VALUES
+(1, 1, 1, 'Pc Gamer Full HD', 'Ut id elit enim. Phasellus luctus ex ipsum, et sagittis erat commodo eu. Vivamus pretium dignissim risus, eget sollicitudin velit malesuada a. Nulla pellentesque mi neque, quis convallis sapien sagittis vitae.', 10, 4399, 5789, 4, 1, 1, 1, 0, '1,2,4', 0.9, 20, 15, 20, 15),
+(2, 6, 2, 'Headset sem fio', 'Alguma outra descrição', 10, 199, 249, 0, 1, 1, 1, 0, '1,2', 0.7, 20, 15, 20, 15),
+(3, 7, 2, 'Smart Tv', 'Alguma outra descrição', 10, 599, 699, 2, 0, 0, 0, 1, '1,4', 1.4, 20, 15, 20, 15),
+(4, 1, 3, 'Ps4 Pro', 'Alguma outra descrição', 10, 779, 900, 3, 0, 0, 0, 0, '2', 0.4, 20, 15, 20, 15),
+(5, 7, 2, 'Smart TV 4k', 'Alguma outra descrição', 10, 299, 499, 5, 0, 0, 1, 1, '1,2', 0.6, 20, 15, 20, 15),
+(6, 2, 3, 'Notebook Gamer', 'Alguma outra descrição', 10, 699, 0, 0, 1, 0, 0, 0, '2,4', 0.5, 20, 15, 20, 15),
+(7, 8, 3, 'Tablet Irado', 'Alguma outra descrição', 10, 889, 999, 0, 1, 0, 0, 0, '1,4', 0.8, 20, 15, 20, 15),
+(8, 1, 6, 'Controle Xbox one S', 'Alguma outra descrição', 10, 599, 699, 4, 0, 0, 0, 0, '2', 0.3, 20, 15, 20, 15),
+(9, 1, 6, 'Xbox one S + Titanfall', 'Monitor lindo 19 polegadas', 10, 900, 1200, 0, 0, 1, 0, 1, '1,4', 0.9, 20, 15, 20, 15),
+(10, 1, 1, 'Pc Gamer Full Max', 'Lindo monitor gamer 4k', 5, 1200, 1500, 5, 1, 0, 1, 0, '1,2', 0.9, 20, 15, 20, 15),
+(11, 2, 3, 'Monitor 4k', 'Alguma outra descrição', 10, 699, 0, 0, 1, 0, 0, 0, '2,4', 0.9, 20, 15, 20, 15),
+(12, 7, 2, 'Smart Tv 65', 'Lindo monitor gamer HD', 5, 1200, 1500, 5, 1, 0, 1, 0, '1,2', 0.9, 20, 15, 20, 15),
+(13, 6, 2, 'Headset Gamer', 'Este headset foi forjado com estrutura em plástico reforçado para durar muito mais tempo além de entregar muito mais estilo para seu setup.', 10, 199, 249, 0, 1, 1, 1, 0, '1,4', 0.9, 20, 15, 20, 15),
+(15, 3, 3, 'Teclado gamer sem fio', 'Ut id elit enim. Phasellus luctus ex ipsum, et sagittis erat commodo eu. Vivamus pretium dignissim risus, eget sollicitudin velit malesuada a. Nulla pellentesque mi neque, quis convallis sapien sagittis vitae.', 20, 139, 199, 4, 0, 0, 0, 1, '1,2,4', 0.9, 20, 15, 20, 15);
 
 -- --------------------------------------------------------
 
@@ -179,12 +189,14 @@ INSERT INTO `products_images` (`id`, `id_product`, `url`) VALUES
 (7, 7, 'tablet.png'),
 (8, 8, 'controle.png'),
 (9, 9, 'xboxone.png'),
-(10, 10, 'pcgamer.png'),
-(12, 12, 'monitor.png'),
-(13, 13, 'tv.png'),
+(10, 10, 'pc.png'),
+(12, 11, 'monitor.png'),
+(13, 12, 'tv.png'),
 (14, 1, 'tv2.png'),
 (15, 1, 'tablet.png'),
-(16, 1, 'controle.png');
+(16, 1, 'controle.png'),
+(17, 13, 'headset2.png'),
+(18, 15, 'teclado.png');
 
 -- --------------------------------------------------------
 
@@ -288,16 +300,19 @@ CREATE TABLE `users` (
   `id` int(11) UNSIGNED NOT NULL,
   `name` varchar(255) NOT NULL,
   `email` varchar(100) NOT NULL DEFAULT '',
-  `password` varchar(32) NOT NULL DEFAULT ''
+  `password` varchar(255) NOT NULL,
+  `admin` tinyint(1) NOT NULL DEFAULT 0,
+  `token` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 --
 -- Extraindo dados da tabela `users`
 --
 
-INSERT INTO `users` (`id`, `name`, `email`, `password`) VALUES
-(1, 'Joelinton', 'jojo@msn.com', '81dc9bdb52d04dc20036dbd8313ed055'),
-(2, 'Clodoaldo', 'clodo@bol.com', '81dc9bdb52d04dc20036dbd8313ed055');
+INSERT INTO `users` (`id`, `name`, `email`, `password`, `admin`, `token`) VALUES
+(1, 'Joelinton', 'jojo@msn.com', '81dc9bdb52d04dc20036dbd8313ed055', 0, ''),
+(2, 'Clodoaldo', 'clodo@bol.com', '81dc9bdb52d04dc20036dbd8313ed055', 0, ''),
+(3, 'Daniel Ferreira', 'daniel@gmail.com', '$2y$10$cvqbr6zfPWrNivjJ8yp00ePOYWfUFVFOkAL8Pjbp5dQaggAFcz43u', 1, NULL);
 
 --
 -- Índices para tabelas despejadas
@@ -389,13 +404,13 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT de tabela `brands`
 --
 ALTER TABLE `brands`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT de tabela `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
 
 --
 -- AUTO_INCREMENT de tabela `coupons`
@@ -419,13 +434,13 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT de tabela `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
 
 --
 -- AUTO_INCREMENT de tabela `products_images`
 --
 ALTER TABLE `products_images`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
 
 --
 -- AUTO_INCREMENT de tabela `products_options`
@@ -461,7 +476,7 @@ ALTER TABLE `rates`
 -- AUTO_INCREMENT de tabela `users`
 --
 ALTER TABLE `users`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
