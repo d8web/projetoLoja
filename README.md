@@ -25,5 +25,5 @@ Você deve acessar a pasta *public* do projeto.
 
 ## Database
 
-Copiar o arquivo loja.sql no banco de dados e configurar em *src/Config.php*
+Copiar o arquivo loja.sql no banco de dados e configurar em *src/Config.php*.
 Importar o arquivo sql no seu banco de dados.
