@@ -4,6 +4,17 @@
     --bg-color: #e7e7e7;
 }
 
+input:focus,
+button:focus,
+a:focus {
+    outline: none !important;
+    box-shadow: none !important;
+}
+
+.btn:hover {
+    color: #fff !important;
+}
+
 body {
     background-color: var(--white);
 }
