@@ -6,5 +6,9 @@
             "core\\": "core/",
             "src\\": "src/"
         }
+    },
+    "require": {
+        "stripe/stripe-php": "^7.119",
+        "paypal/paypal-checkout-sdk": "^1.0"
     }
 }

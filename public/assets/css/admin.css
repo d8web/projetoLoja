@@ -1,0 +1,213 @@
+* {
+    text-decoration: none;
+    appearance: none;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    list-style: none;
+    font-family: "Ping Pong", sans-serif;
+}
+
+body {
+    width: 100%;
+    height: 100vh;
+    color: #333;
+}
+
+.container-site {
+    display: flex;
+}
+
+aside {
+    min-width: 280px;
+    height: 100vh;
+    padding: 2rem 1rem;
+}
+
+aside .top {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 3.7rem;
+}
+
+aside .logo {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+aside .text-primary {
+    color: #0d6efd;
+}
+
+aside .logo h2 {
+    font-size: 22px;
+    margin-top: 3px;
+}
+
+aside .logo img {
+    width: 2rem;
+    height: 2rem;
+}
+
+aside .close {
+    display: none;
+    align-items: center;
+}
+
+aside .sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 86vh;
+    position: relative;
+    background: #fff;
+    top: 2rem;
+}
+
+aside h3 {
+    font-size: 16px;
+}
+
+aside .sidebar a {
+    display: flex;
+    color: #999;
+    gap: 1rem;
+    align-items: center;
+    position: relative;
+    height: 3.7rem;
+    transition: all 300ms ease;
+}
+
+aside .sidebar a span {
+    font-size: 1.6rem;
+    transition: all .2s ease;
+}
+
+aside .sidebar a:last-child {
+    position: absolute;
+    bottom: 2rem;
+    width: 100%;
+}
+
+aside .sidebar a.active {
+    color: #0d6efd;
+    background-color: #eee;
+}
+
+aside .sidebar a.active::before {
+    content: "";
+    width: 6px;
+    height: 100%;
+    background-color: #0d6efd;
+}
+
+aside .sidebar a:hover {
+    color: #0d6efd;
+}
+
+aside .sidebar a:hover span {
+    margin-left: 1rem;
+}
+
+/* ======================== Main ======================== */
+main {
+    flex: 1;
+    margin-top: 1.4rem;
+}
+
+main .insights {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.6rem;
+}
+
+main .insights > div {
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px 0 rgb(0 0 0 / 10%);
+    margin-top: 1rem;
+    transition: all .3s ease-in-out;
+}
+
+main .insights > div:hover {
+    box-shadow: none;
+}
+
+main .insights > div span {
+    padding: 0.5rem;
+    background-color: #0d6efd;
+    border-radius: 50%;
+    color: #fff;
+}
+
+main .insights > div.expenses span {
+    background-color: #fe7785;
+}
+
+main .insights > div.income span {
+    background-color: #41f1b6;
+}
+
+main .insights > div .middle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+main .insights h3 {
+    margin: 1rem 0 0.6rem;
+    font-size: 1rem;
+}
+
+main .insights .progress {
+    position: relative;
+    width: 92px;
+    height: 92px;
+    border-radius: 50%;
+}
+
+main .insights svg {
+    width: 100%;
+    height: 100%;
+}
+
+main .insights svg circle {
+    fill: none;
+    stroke: #0d6efd;
+    stroke-width: 14;
+    stroke-linecap: round;
+    transform: translate(5px, 5px);
+}
+
+main .insights .sales svg circle {
+    stroke-dashoffset: -30;
+    stroke-dasharray: 200;
+}
+
+main .insights .expenses svg circle {
+    stroke-dashoffset: 22;
+    stroke-dasharray: 82;
+}
+
+main .insights .income svg circle {
+    stroke-dashoffset: 35;
+    stroke-dasharray: 110;
+}
+
+main .insights .progress .number {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+main .insights small {
+    display: block;
+    margin-top: 1.3rem;
+    color: #999;
+}

@@ -19,10 +19,22 @@
                             <div class="mt-1">
                                 <div class="d-flex justify-content-between">
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" <?php echo (isset($filters_selected['brand']) && in_array($item['id'], $filters_selected['brand']))?'checked="checked"':'';?> type="checkbox" name="filter[brand][]" value="<?=$item['id'];?>" id="filter_brand<?=$item['id'];?>">
-                                        <label class="form-check-label margin-small" for="filter_brand<?=$item['id'];?>">
-                                            <?=$item['name'];?>
-                                        </label>
+                                        <input
+                                            class="form-check-input"
+                                            <?php
+                                                echo (isset($filters_selected['brand']) &&
+                                                in_array($item['id'], $filters_selected['brand'])) ?
+                                                'checked="checked"' : '';
+                                            ?>
+                                            type="checkbox"
+                                            name="filter[brand][]"
+                                            value="<?=$item['id'];?>"
+                                            id="filter_brand<?=$item['id'];?>"
+                                        >
+                                        <label
+                                            class="form-check-label margin-small"
+                                            for="filter_brand<?=$item['id'];?>"
+                                        ><?=$item['name'];?></label>
                                     </div>
                                     <div>(<?=$item['count'];?>)</div>
                                 </div>
@@ -39,9 +51,24 @@
                         <?=$this->lang->get("PRICE");?>
                     </h3>
                     <div class="mt-2 mb-3">
-                        <input type="hidden" id="slider0" name="filter[slider0]" value="<?=$filters['slider0'];?>"/>
-                        <input type="hidden" id="slider1" name="filter[slider1]" value="<?=$filters['slider1'];?>"/>
-                        <input type="text" id="amount" readonly class="border-0 bg-transparent default-color no-outline fs-6 w-100 fw-bold"/>
+                        <input
+                            type="hidden"
+                            id="slider0"
+                            name="filter[slider0]"
+                            value="<?=$filters['slider0'];?>"
+                        />
+                        <input
+                            type="hidden"
+                            id="slider1"
+                            name="filter[slider1]"
+                            value="<?=$filters['slider1'];?>"
+                        />
+                        <input
+                            type="text"
+                            id="amount"
+                            readonly
+                            class="border-0 bg-transparent default-color no-outline fs-6 w-100 fw-bold"
+                        />
                         <div id="slider-range" class="m-2"></div>
                     </div>
                 </div>
@@ -58,7 +85,17 @@
                             <!-- Zero estrelas -->
                             <div class="d-flex justify-content-between">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" <?php echo (isset($filters_selected['star']) && in_array('0', $filters_selected['star']))?'checked="checked"':'';?> name="filter[star][]" value="0" id="filter_star0">
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        <?php
+                                            echo (isset($filters_selected['star']) &&
+                                            in_array('0', $filters_selected['star'])) ? 'checked="checked"':'';
+                                        ?>
+                                        name="filter[star][]"
+                                        value="0"
+                                        id="filter_star0"
+                                    >
                                     <label class="form-check-label" for="filter_star0">
                                         <div class="d-flex align-items-center margin-1 pointer">
                                             <?=$this->lang->get("NOSTAR");?>
@@ -71,7 +108,17 @@
                             <!-- Uma estrela -->
                             <div class="d-flex justify-content-between">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" <?php echo (isset($filters_selected['star']) && in_array('1', $filters_selected['star']))?'checked="checked"':'';?> name="filter[star][]" value="1" id="filter_star1">
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        <?php
+                                            echo (isset($filters_selected['star']) &&
+                                            in_array('1', $filters_selected['star'])) ? 'checked="checked"':'';
+                                        ?>
+                                        name="filter[star][]"
+                                        value="1"
+                                        id="filter_star1"
+                                    >
                                     <label class="form-check-label" for="filter_star1">
                                         <div class="d-flex align-items-center mt-1 pointer">
                                             <i class="fas fa-star warning yellow"></i>
@@ -84,7 +131,17 @@
                             <!-- Duas estrelas -->
                             <div class="d-flex justify-content-between">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" <?php echo (isset($filters_selected['star']) && in_array('2', $filters_selected['star']))?'checked="checked"':'';?> name="filter[star][]" value="2" id="filter_star2">
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        <?php
+                                            echo (isset($filters_selected['star']) &&
+                                            in_array('2', $filters_selected['star'])) ? 'checked="checked"':'';
+                                        ?>
+                                        name="filter[star][]"
+                                        value="2"
+                                        id="filter_star2"
+                                    >
                                     <label class="form-check-label" for="filter_star2">
                                         <div class="d-flex align-items-center mt-1 pointer">
                                             <i class="fas fa-star warning yellow"></i>
@@ -98,7 +155,17 @@
                             <!-- Três estrelas -->
                             <div class="d-flex justify-content-between">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" <?php echo (isset($filters_selected['star']) && in_array('3', $filters_selected['star']))?'checked="checked"':'';?> name="filter[star][]" value="3" id="filter_star3">
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        <?php
+                                            echo (isset($filters_selected['star']) &&
+                                            in_array('3', $filters_selected['star'])) ? 'checked="checked"':'';
+                                        ?>
+                                        name="filter[star][]"
+                                        value="3"
+                                        id="filter_star3"
+                                    >
                                     <label class="form-check-label" for="filter_star3">
                                         <div class="d-flex align-items-center mt-1 pointer">
                                             <i class="fas fa-star warning yellow"></i>
@@ -113,7 +180,17 @@
                             <!-- Quatro estrelas -->
                             <div class="d-flex justify-content-between">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" <?php echo (isset($filters_selected['star']) && in_array('4', $filters_selected['star']))?'checked="checked"':'';?> name="filter[star][]" value="4" id="filter_star4">
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        <?php
+                                            echo (isset($filters_selected['star']) &&
+                                            in_array('4', $filters_selected['star'])) ? 'checked="checked"':'';
+                                        ?>
+                                        name="filter[star][]"
+                                        value="4"
+                                        id="filter_star4"
+                                    >
                                     <label class="form-check-label" for="filter_star4">
                                         <div class="d-flex align-items-center mt-1 pointer">
                                             <i class="fas fa-star warning yellow"></i>
@@ -129,7 +206,17 @@
                             <!-- Cinco estrelas -->
                             <div class="d-flex justify-content-between">
                                 <div class="form-check form-switch">
-                                    <input class="form-check-input" type="checkbox" <?php echo (isset($filters_selected['star']) && in_array('5', $filters_selected['star']))?'checked="checked"':'';?> name="filter[star][]" value="5" id="filter_star5">
+                                    <input
+                                        class="form-check-input"
+                                        type="checkbox"
+                                        <?php
+                                            echo (isset($filters_selected['star']) &&
+                                            in_array('5', $filters_selected['star'])) ? 'checked="checked"' : '';
+                                        ?>
+                                        name="filter[star][]"
+                                        value="5"
+                                        id="filter_star5"
+                                    >
                                     <label class="form-check-label" for="filter_star5">
                                         <div class="d-flex align-items-center mt-1 pointer">
                                             <i class="fas fa-star warning yellow"></i>
@@ -158,10 +245,22 @@
                     <div class="mt-2 mb-2">
                         <div class="d-flex justify-content-between">
                             <div class="form-check form-switch">
-                                <input class="form-check-input" type="checkbox" <?php echo (isset($filters_selected['sale']) && $filters_selected['sale'] == '1')?'checked="checked"':'';?> name="filter[sale]" value="1" id="filter_sale">
-                                <label class="form-check-label margin-small" for="filter_sale">
-                                    Promoção
-                                </label>
+                                <input
+                                    class="form-check-input"
+                                    type="checkbox"
+                                    <?php
+                                        echo (isset($filters_selected['sale'])
+                                        && $filters_selected['sale'] == '1') ?
+                                        'checked="checked"':'';
+                                    ?>
+                                    name="filter[sale]"
+                                    value="1"
+                                    id="filter_sale"
+                                >
+                                <label
+                                    class="form-check-label margin-small"
+                                    for="filter_sale"
+                                >Promoção</label>
                             </div>
                             <div>(<?=$filters['sale'];?>)</div>
                         </div>
@@ -181,8 +280,22 @@
                             <?php foreach($option['options'] as $op): ?>
                                 <div class="d-flex justify-content-between mb-1">
                                     <div class="form-check form-switch">
-                                        <input class="form-check-input" type="checkbox" <?php echo (isset($filters_selected['options']) && in_array($op['value'], $filters_selected['options']))?'checked="checked"':'';?> name="filter[options][]" value="<?=$op['value'];?>" id="filter_options<?=$op['value'];?>">
-                                        <label class="form-check-label margin-small" for="filter_options<?=$op['value'];?>">
+                                        <input
+                                            class="form-check-input"
+                                            type="checkbox"
+                                            <?php 
+                                                echo (isset($filters_selected['options']) && 
+                                                in_array($op['value'], $filters_selected['options'])) ?
+                                                'checked="checked"' : ''
+                                            ?>
+                                            name="filter[options][]"
+                                            value="<?=$op['value'];?>"
+                                            id="filter_options<?=$op['value'];?>"
+                                        >
+                                        <label
+                                            class="form-check-label margin-small"
+                                            for="filter_options<?=$op['value'];?>"
+                                        >
                                             <?=$op['value'];?>
                                         </label>
                                     </div>

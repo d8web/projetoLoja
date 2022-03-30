@@ -4,14 +4,12 @@ namespace src\controllers;
 use \core\Controller;
 use src\handlers\CartHandler;
 use src\handlers\Store;
-use \src\models\Products;
 
 class CartController extends Controller
 {
     public function cart()
     {
         $store = new Store();
-        $products = new Products();
         $cep = '';
         $shipping = [];
 
@@ -88,6 +86,12 @@ class CartController extends Controller
                 case 'checkout_transparent':
                     $this->redirect('/pscktransparent');
                     exit;
+                break;
+                case "checkout_stripe":
+                    $this->redirect("/stripe");
+                exit;
+                case "checkout_paypal":
+                    $this->redirect("/paypal");
                 break;
             }
 

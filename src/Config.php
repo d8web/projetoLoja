@@ -13,6 +13,8 @@ class Config {
     const DEFAULT_LANG = 'en';
     const CEP_ORIGIN = '37245000';
 
+    const STRIPE_KEY = "";
+
     const ERROR_CONTROLLER = 'ErrorController';
     const DEFAULT_ACTION = 'index';
 }

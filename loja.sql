@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.1.0
+-- version 5.1.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Tempo de geração: 06-Maio-2021 às 16:06
--- Versão do servidor: 10.4.18-MariaDB
--- versão do PHP: 7.4.16
+-- Tempo de geração: 30-Mar-2022 às 21:09
+-- Versão do servidor: 10.4.22-MariaDB
+-- versão do PHP: 8.1.2
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -67,7 +67,8 @@ INSERT INTO `categories` (`id`, `sub`, `name`) VALUES
 (5, 3, 'Com Fio'),
 (6, 3, 'Sem Fio'),
 (7, NULL, 'Tvs'),
-(8, NULL, 'Tablet');
+(8, NULL, 'Tablet'),
+(10, NULL, 'Gamer');
 
 -- --------------------------------------------------------
 
@@ -148,20 +149,21 @@ CREATE TABLE `products` (
 --
 
 INSERT INTO `products` (`id`, `id_category`, `id_brand`, `name`, `description`, `stock`, `price`, `price_from`, `rating`, `featured`, `sale`, `bestseller`, `new_product`, `options`, `weight`, `width`, `height`, `length`, `diameter`) VALUES
-(1, 1, 1, 'Pc Gamer Full HD', 'Ut id elit enim. Phasellus luctus ex ipsum, et sagittis erat commodo eu. Vivamus pretium dignissim risus, eget sollicitudin velit malesuada a. Nulla pellentesque mi neque, quis convallis sapien sagittis vitae.', 10, 4399, 5789, 4, 1, 1, 1, 0, '1,2,4', 0.9, 20, 15, 20, 15),
+(1, 10, 1, 'Pc Gamer Full HD', 'Ut id elit enim. Phasellus luctus ex ipsum, et sagittis erat commodo eu. Vivamus pretium dignissim risus, eget sollicitudin velit malesuada a. Nulla pellentesque mi neque, quis convallis sapien sagittis vitae.', 10, 4399, 5789, 4, 1, 1, 1, 0, '1,2,4', 0.9, 20, 15, 20, 15),
 (2, 6, 2, 'Headset sem fio', 'Alguma outra descrição', 10, 199, 249, 0, 1, 1, 1, 0, '1,2', 0.7, 20, 15, 20, 15),
 (3, 7, 2, 'Smart Tv', 'Alguma outra descrição', 10, 599, 699, 2, 0, 0, 0, 1, '1,4', 1.4, 20, 15, 20, 15),
-(4, 1, 3, 'Ps4 Pro', 'Alguma outra descrição', 10, 779, 900, 3, 0, 0, 0, 0, '2', 0.4, 20, 15, 20, 15),
+(4, 10, 3, 'Ps4 Pro', 'Alguma outra descrição', 10, 779, 900, 3, 0, 0, 0, 0, '2', 0.4, 20, 15, 20, 15),
 (5, 7, 2, 'Smart TV 4k', 'Alguma outra descrição', 10, 299, 499, 5, 0, 0, 1, 1, '1,2', 0.6, 20, 15, 20, 15),
-(6, 2, 3, 'Notebook Gamer', 'Alguma outra descrição', 10, 699, 0, 0, 1, 0, 0, 0, '2,4', 0.5, 20, 15, 20, 15),
+(6, 10, 3, 'Notebook Gamer', 'Alguma outra descrição', 10, 699, 0, 0, 1, 0, 0, 0, '2,4', 0.5, 20, 15, 20, 15),
 (7, 8, 3, 'Tablet Irado', 'Alguma outra descrição', 10, 889, 999, 0, 1, 0, 0, 0, '1,4', 0.8, 20, 15, 20, 15),
-(8, 1, 6, 'Controle Xbox one S', 'Alguma outra descrição', 10, 599, 699, 4, 0, 0, 0, 0, '2', 0.3, 20, 15, 20, 15),
-(9, 1, 6, 'Xbox one S + Titanfall', 'Monitor lindo 19 polegadas', 10, 900, 1200, 0, 0, 1, 0, 1, '1,4', 0.9, 20, 15, 20, 15),
-(10, 1, 1, 'Pc Gamer Full Max', 'Lindo monitor gamer 4k', 5, 1200, 1500, 5, 1, 0, 1, 0, '1,2', 0.9, 20, 15, 20, 15),
-(11, 2, 3, 'Monitor 4k', 'Alguma outra descrição', 10, 699, 0, 0, 1, 0, 0, 0, '2,4', 0.9, 20, 15, 20, 15),
+(8, 10, 6, 'Controle Xbox one S', 'Alguma outra descrição', 10, 599, 699, 4, 0, 0, 0, 0, '2', 0.3, 20, 15, 20, 15),
+(9, 10, 6, 'Xbox one S + Titanfall', 'Monitor lindo 19 polegadas', 10, 900, 1200, 0, 0, 1, 0, 1, '1,4', 0.9, 20, 15, 20, 15),
+(10, 10, 1, 'Pc Gamer Full Max', 'Lindo monitor gamer 4k', 5, 1200, 1500, 5, 1, 0, 1, 0, '1,2', 0.9, 20, 15, 20, 15),
+(11, 1, 3, 'Monitor 4k', 'Alguma outra descrição', 10, 699, 0, 0, 1, 0, 0, 0, '2,4', 0.9, 20, 15, 20, 15),
 (12, 7, 2, 'Smart Tv 65', 'Lindo monitor gamer HD', 5, 1200, 1500, 5, 1, 0, 1, 0, '1,2', 0.9, 20, 15, 20, 15),
-(13, 6, 2, 'Headset Gamer', 'Este headset foi forjado com estrutura em plástico reforçado para durar muito mais tempo além de entregar muito mais estilo para seu setup.', 10, 199, 249, 0, 1, 1, 1, 0, '1,4', 0.9, 20, 15, 20, 15),
-(15, 3, 3, 'Teclado gamer sem fio', 'Ut id elit enim. Phasellus luctus ex ipsum, et sagittis erat commodo eu. Vivamus pretium dignissim risus, eget sollicitudin velit malesuada a. Nulla pellentesque mi neque, quis convallis sapien sagittis vitae.', 20, 139, 199, 4, 0, 0, 0, 1, '1,2,4', 0.9, 20, 15, 20, 15);
+(13, 10, 2, 'Headset Gamer', 'Este headset foi forjado com estrutura em plástico reforçado para durar muito mais tempo além de entregar muito mais estilo para seu setup.', 10, 199, 249, 0, 1, 1, 1, 0, '1,4', 0.9, 20, 15, 20, 15),
+(15, 10, 3, 'Teclado gamer sem fio', 'Ut id elit enim. Phasellus luctus ex ipsum, et sagittis erat commodo eu. Vivamus pretium dignissim risus, eget sollicitudin velit malesuada a. Nulla pellentesque mi neque, quis convallis sapien sagittis vitae.', 20, 139, 199, 4, 0, 0, 0, 1, '1,2,4', 0.9, 20, 15, 20, 15),
+(16, 10, 1, 'Pc Gamer Nitro', 'Ut id elit enim. Phasellus luctus ex ipsum, et sagittis erat commodo eu. Vivamus pretium dignissim risus, eget sollicitudin velit malesuada a. Nulla pellentesque mi neque, quis convallis sapien sagittis vitae.', 30, 3799, 4299, 5, 1, 0, 0, 1, '1,2,3', 4.4, 70, 60, 56, 66);
 
 -- --------------------------------------------------------
 
@@ -196,7 +198,8 @@ INSERT INTO `products_images` (`id`, `id_product`, `url`) VALUES
 (15, 1, 'tablet.png'),
 (16, 1, 'controle.png'),
 (17, 13, 'headset2.png'),
-(18, 15, 'teclado.png');
+(18, 15, 'teclado.png'),
+(19, 16, 'gamerdesktop.png');
 
 -- --------------------------------------------------------
 
@@ -224,7 +227,10 @@ INSERT INTO `products_options` (`id`, `id_product`, `id_option`, `p_value`) VALU
 (6, 3, 1, 'Vermelho'),
 (7, 3, 2, '23cm'),
 (8, 5, 1, 'Cinza'),
-(9, 5, 2, '108cm');
+(9, 5, 2, '108cm'),
+(10, 16, 1, 'Azul'),
+(11, 16, 2, '108cm'),
+(12, 16, 3, '8gb');
 
 -- --------------------------------------------------------
 
@@ -237,7 +243,7 @@ CREATE TABLE `purchases` (
   `id_user` int(11) NOT NULL,
   `id_coupon` int(11) DEFAULT NULL,
   `total_amount` float NOT NULL,
-  `payment_type` int(11) DEFAULT NULL,
+  `payment_type` varchar(255) DEFAULT NULL,
   `payment_status` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
@@ -312,7 +318,7 @@ CREATE TABLE `users` (
 INSERT INTO `users` (`id`, `name`, `email`, `password`, `admin`, `token`) VALUES
 (1, 'Joelinton', 'jojo@msn.com', '81dc9bdb52d04dc20036dbd8313ed055', 0, ''),
 (2, 'Clodoaldo', 'clodo@bol.com', '81dc9bdb52d04dc20036dbd8313ed055', 0, ''),
-(3, 'Daniel Ferreira', 'daniel@gmail.com', '$2y$10$cvqbr6zfPWrNivjJ8yp00ePOYWfUFVFOkAL8Pjbp5dQaggAFcz43u', 1, NULL);
+(3, 'Daniel Ferreira', 'daniel@gmail.com', '$2y$10$yB5p2OeJzgWUxr3OMDbzOOFJZ9uOPESdrVexvC6xRFU1CRB2kQ7I6', 1, 'cbc08062cabd6461ebcec73a51029275');
 
 --
 -- Índices para tabelas despejadas
@@ -410,7 +416,7 @@ ALTER TABLE `brands`
 -- AUTO_INCREMENT de tabela `categories`
 --
 ALTER TABLE `categories`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de tabela `coupons`
@@ -434,19 +440,19 @@ ALTER TABLE `pages`
 -- AUTO_INCREMENT de tabela `products`
 --
 ALTER TABLE `products`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de tabela `products_images`
 --
 ALTER TABLE `products_images`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=19;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT de tabela `products_options`
 --
 ALTER TABLE `products_options`
-  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=10;
+  MODIFY `id` int(11) UNSIGNED NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 
 --
 -- AUTO_INCREMENT de tabela `purchases`

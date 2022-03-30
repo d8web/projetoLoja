@@ -71,16 +71,18 @@
                         <?php
                             $frete = isset($shipping['price']) ? floatval(str_replace(',', '.', $shipping['price'])) : 0;
                             $total = $subtotal + $frete;
+                            $_SESSION["total"] = str_replace(".", "", $total).".00";
                             echo number_format($total, 2, ',', '.');
                         ?>
                     </strong>
                 </div>
                 <?php if($frete > 0): ?>
                     <div class="mt-4">
-                        <form action="<?=$base;?>/payment_redirect" method="post">
+                        <form action="<?=$base;?>/payment_redirect" method="POST">
                             <div class="form-group mb-2">
                                 <select name="payment_type" class="form-select">
-                                    <option value="checkout_transparent">Pagseguro Checkout Tranparente</option>
+                                    <option value="checkout_stripe">Stripe</option>
+                                    <option value="checkout_paypal">Paypal</option>
                                 </select>
                             </div>
                             <div class="form-group">

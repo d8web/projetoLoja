@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-md-12 col-lg-3 d-flex align-items-center responsive-logo">
                 <a href="<?=$base;?>" class="fs-1 m-0 default-color fw-bold">
-                    <img src="<?=$base;?>/assets/images/logo.png" alt="logo" class="w-100"/>
+                    <h1>Store</h1>
                 </a>
             </div>
             <div class="col-md-12 col-lg-9 col-xl-6 align-self-center">
@@ -25,17 +25,20 @@
                                 <input type="search"
                                     name="s"
                                     id="responsive-input"
+                                    placeholder="Pesquisar produto"
                                     autocomplete="off"
-                                    value="<?php echo !empty($search_term) ? $search_term : ''; ?>" class="form-control p-2 border"
+                                    value="<?= !empty($search_term) ? $search_term : ''; ?>"
+                                        class="form-control p-2 border"
                                 />                                
                                 <select name="category" class="my-padding-form no-outline border responsive-input">
                                     <option value="">
                                         <?=$this->lang->get("ALLCATEGORIES");?>
                                     </option>
                                     <?php foreach($categories as $item): ?>                                    
-                                        <option value="<?=$item['id'];?>" <?php echo ($category==$item['id']?'selected="selected"':'');?>>
-                                            <?=$item['name'];?>
-                                        </option>
+                                        <option
+                                            value="<?=$item['id'];?>"
+                                            <?php echo ($category==$item['id']?'selected="selected"':'');?>
+                                        ><?=$item['name'];?></option>
                                         <?php if(count($item['subs']) > 0): ?>
                                             <?=$render('search_subcategory', [
                                                 'subs' => $item['subs'],
@@ -46,7 +49,12 @@
                                     <?php endforeach; ?>
 
                                 </select>
-                                <input type="submit" id="responsive-input" class="btn bg-color-default" value="Pesquisar"/>
+                                <input
+                                    type="submit"
+                                    id="responsive-input"
+                                    class="btn bg-color-default"
+                                    value="Pesquisar"
+                                />
                             </div>
                         </form>
                     </div>

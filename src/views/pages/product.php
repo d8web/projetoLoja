@@ -5,12 +5,18 @@
         <div class="row">
             <div class="col-md-6 mb-4">
                 <div class="p-5 d-block transition">
-                    <img src="<?=$base;?>/media/products/<?=$images[0]['url'];?>" class="img-fluid main-photo"/>
+                    <img
+                        src="<?=$base;?>/media/products/<?=$images[0]['url'];?>"
+                        class="img-fluid main-photo"
+                    />
                 </div>
                 <div class="d-flex justify-content-center align-items-center">
                     <?php foreach($images as $img): ?>
                         <div class="p-3">
-                            <img src="<?=$base;?>/media/products/<?=$img['url'];?>" class="my-images"/>
+                            <img
+                                src="<?=$base;?>/media/products/<?=$img['url'];?>"
+                                class="my-images"
+                            />
                         </div>
                     <?php endforeach; ?>
                 </div>
@@ -44,7 +50,12 @@
                         </span>
                     </span>
                     
-                    <form action="<?=$base;?>/cart/add" method="post" class="mt-4 addtocart" id="addtocart">
+                    <form
+                        action="<?=$base;?>/cart/add"
+                        method="post"
+                        class="mt-4 addtocart"
+                        id="addtocart"
+                    >
                         <input type="hidden" name="id_product" value="<?=$info['id'];?>"/>
                         <input type="hidden" name="qt_product" value="1"/>
                         <button data-action="decrease" class="border border-secondary">

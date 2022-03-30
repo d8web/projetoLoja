@@ -4,12 +4,11 @@ namespace core;
 use \src\Config;
 use \core\Language;
 
-class Controller
-{
+class Controller {
+
     protected $lang;
 
-    public function __construct()
-    {
+    public function __construct() {
         $this->lang = new Language();
     }
 

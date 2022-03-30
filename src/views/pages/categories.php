@@ -36,7 +36,9 @@
                     <ul class="pagination pagination-md mt-2 mb-5">
                         <?php for($q = 1; $q <= $number_of_pages; $q++): ?>
                             <li class="page-item <?=($current_page==$q)?'active':'';?>">
-                                <a class="page-link" href="<?=$base;?>/categories/<?=$id_category;?>?page=<?=$q;?>">
+                                <a
+                                    class="page-link"
+                                    href="<?=$base;?>/categories/<?=$id_category;?>?page=<?=$q;?>">
                                     <?=$q;?>
                                 </a>
                             </li>

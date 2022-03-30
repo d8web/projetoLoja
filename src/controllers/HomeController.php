@@ -11,6 +11,11 @@ class HomeController extends Controller
 {
     public function index()
     {
+        if(isset($_GET["payment_intent"]) && !empty($_GET["payment_intent"])) {
+            unset($_SESSION["cart"]);
+            unset($_SESSION["total"]);
+        }
+
         $store = new Store();        
         $products = new Products();
         $categories = new Categories();

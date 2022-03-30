@@ -3,7 +3,13 @@
         <div class="row">
             <div class="col-sm-12 col-md-5 col-lg-3">
                 <div class="dropdown">
-                    <button class="btn bg-color-default dropdown-toggle w-100 p-3" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                    <button
+                        class="btn bg-color-default dropdown-toggle w-100 p-3"
+                        type="button"
+                        id="dropdownMenuButton1"
+                        data-bs-toggle="dropdown"
+                        aria-expanded="false"
+                    >
                         <?=$this->lang->get("SELECTCATEGORY");?>
                     </button>
                     <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1">
@@ -26,12 +32,17 @@
             <div class="col-sm-12 col-md-7 col-lg-9">
                 <ul class="nav mt-10">
 
-                    <?php if(isset($categorie_filter) && (!empty($categorie_filter) && count($categorie_filter) > 0)): ?>
+                    <?php
+                        if(isset($categorie_filter) &&
+                        (!empty($categorie_filter) &&
+                        count($categorie_filter) > 0)):
+                    ?>
                         <?php foreach($categorie_filter as $item): ?>
                             <li class="nav-item border-end border-secondary">
-                                <a class="nav-link my-color" href="<?=$base;?>/categories/<?=$item['id'];?>">
-                                    <?=$item['name'];?>
-                                </a>
+                                <a
+                                    class="nav-link my-color"
+                                    href="<?=$base;?>/categories/<?=$item['id'];?>"
+                                ><?=$item['name'];?></a>
                             </li>
                         <?php endforeach; ?>
                     <?php endif; ?>

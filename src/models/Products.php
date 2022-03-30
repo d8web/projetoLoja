@@ -76,16 +76,20 @@ class Products extends Model
         AND id_product IN (".implode(",", $ids).") 
         GROUP BY p_value 
         ORDER BY id_option";
-        $sql = $this->pdo->prepare($sql);
-        $sql->execute();
-        if($sql->rowCount() > 0) {
-            foreach($sql->fetchAll(\PDO::FETCH_ASSOC) as $ops)
-            {
-                $array[$ops['id_option']]['options'][] = [
-					'id' => $ops['id_option'],
-					'value'=>$ops['p_value'],
-					'count'=>$ops['c']
-                ]; 
+
+        if(count($groups) > 0) {
+            $sql = $this->pdo->prepare($sql);
+            $sql->execute();
+            
+            if($sql->rowCount() > 0) {
+                foreach($sql->fetchAll(\PDO::FETCH_ASSOC) as $ops)
+                {
+                    $array[$ops['id_option']]['options'][] = [
+                        'id' => $ops['id_option'],
+                        'value'=>$ops['p_value'],
+                        'count'=>$ops['c']
+                    ]; 
+                }
             }
         }
 

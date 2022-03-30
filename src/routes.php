@@ -18,5 +18,13 @@ $router->post('/payment_redirect', 'CartController@payment');
 $router->get('/clean', 'CartController@clean');
 
 $router->get('/pscktransparent', 'PagseguroController@checkoutTransparent');
+$router->get("/stripe", 'StripeController@stripe');
+$router->get("/paypal", 'PaypalController@paypal');
 
-// Continue to: Integração Pagseguro - Iniciando Pagamento
+$router->get("/signin", "AuthController@signin");
+$router->post("/submitSignin", "AuthController@submitSignin");
+
+// Admin
+$router->get("/admin", "Admin\AdminController@index");
+$router->get("/admin/signIn", "Admin\AuthController@signInAdmin");
+$router->post("/admin/submitSigninAdmin", "Admin\AuthController@submit");
