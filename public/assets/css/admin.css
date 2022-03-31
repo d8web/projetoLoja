@@ -21,14 +21,15 @@ body {
 aside {
     min-width: 280px;
     height: 100vh;
-    padding: 2rem 1rem;
+    border-right: 1px solid #eee;
 }
 
 aside .top {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    height: 3.7rem;
+    height: 100px;
+    padding: 0 1rem;
 }
 
 aside .logo {
@@ -62,7 +63,6 @@ aside .sidebar {
     height: 86vh;
     position: relative;
     background: #fff;
-    top: 2rem;
 }
 
 aside h3 {
@@ -82,6 +82,7 @@ aside .sidebar a {
 aside .sidebar a span {
     font-size: 1.6rem;
     transition: all .2s ease;
+    padding-left: 1rem;
 }
 
 aside .sidebar a:last-child {
@@ -113,8 +114,11 @@ aside .sidebar a:hover span {
 /* ======================== Main ======================== */
 main {
     flex: 1;
-    margin-top: 1.4rem;
-    margin-right: 1rem;
+}
+
+.content {
+    width: 100%;
+    padding: 1rem 2rem;
 }
 
 main .insights {
@@ -218,8 +222,6 @@ main .insights small {
     margin-top: 1rem;
     width: 100%;
     margin-right: 1rem;
-    padding: 20px;
-    background-color: #f9f9f9;
     border-radius: 5px;
 }
 
@@ -236,6 +238,7 @@ main .insights small {
 
 .box-header .button-content {
     flex: 1;
+    gap: 20px;
     display: flex;
     justify-content: flex-end;
 }
@@ -246,7 +249,6 @@ table {
     border: 1px solid #ccc;
     text-align: left;
     margin-top: 1rem;
-    background-color: #fff;
 }
 
 table th,
@@ -384,4 +386,29 @@ table td {
 
 .error::placeholder {
     color: crimson !important;
+}
+
+.top-nav {
+    min-height: 60px;
+    display: flex;
+    padding: 0 2rem;
+    align-items: center;
+    justify-content: flex-end;
+    border-bottom: 1px solid #eee;
+}
+
+.top-nav ul {
+    display: flex;
+    gap: 20px;
+}
+
+.top-nav ul li {
+    display: flex;
+}
+
+.top-nav ul li a {
+    display: inline-flex;
+    align-items: center;
+    color: #333;
+    gap: 10px;
 }

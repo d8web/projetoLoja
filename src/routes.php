@@ -31,11 +31,22 @@ $router->post("/admin/submitSigninAdmin", "Admin\AuthController@submit");
 $router->get("/admin/logout", "Admin\AuthController@logout");
 
 $router->get("/admin/permissions", "Admin\PermissionsController@all");
+$router->get("/admin/permissions/items", "Admin\PermissionsController@items");
 
 $router->get("/admin/permissions/new", "Admin\PermissionsController@new");
+$router->get("/admin/permissions/newItem", "Admin\PermissionsController@newItem");
+
+$router->post("/admin/permissions/ItemSubmit", "Admin\PermissionsController@ItemSubmit");
 $router->post("/admin/permissions/newSubmit", "Admin\PermissionsController@newSubmit");
+
+$router->get("/admin/permissions/edit/item/{id}", "Admin\PermissionsController@editItem");
+$router->post("/admin/permissions/editItemSubmit", "Admin\PermissionsController@editItemSubmit");
 
 $router->get("/admin/permissions/edit/{id}", "Admin\PermissionsController@edit");
 $router->post("/admin/permissions/editSubmit", "Admin\PermissionsController@editSubmit");
 
 $router->get("/admin/permissions/del/{id}", "Admin\PermissionsController@delete");
+$router->get("/admin/permissions/del/item/{id}", "Admin\PermissionsController@deleteItem");
+
+// Categories
+$router->get("/admin/categories", "Admin\CategoriesController@index");

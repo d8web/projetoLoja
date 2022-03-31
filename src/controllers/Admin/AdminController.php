@@ -9,6 +9,7 @@ class AdminController extends Controller {
 
     private $loggedAdmin;
     private $permissions;
+    private $data;
 
     public function __construct(){
         $adminHandler = new AdminHandler();
@@ -20,16 +21,16 @@ class AdminController extends Controller {
 
         $p = new Permissions();
         $this->permissions = $p->getUserPermissions($this->loggedAdmin->id_permission);
-    }
 
-    public function index() {
-        $data = [
+        $this->data = [
             "activeMenu" => "dashboard",
             "loggedAdmin" => $this->loggedAdmin,
             "permissions" => $this->permissions
         ];
+    }
 
-        $this->render("admin/dashboard", $data);
+    public function index() {
+        $this->render("admin/dashboard", $this->data);
     }
 
 }

@@ -1,11 +1,27 @@
 <?php
 namespace src\models;
 use \core\Model;
+use src\handlers\Store;
 
 class Permissions extends Model {
 
     public function getPermissionGroupName($idPermission) {
         $sql = "SELECT name FROM permission_groups WHERE id = :id";
+        $sql = $this->pdo->prepare($sql);
+        $sql->bindValue(":id", $idPermission);
+        $sql->execute();
+
+        if($sql->rowCount() > 0) {
+            $data = $sql->fetch();
+            return $data["name"];
+            exit;
+        }
+
+        return "";
+    }
+
+    public function getPermissionItemName($idPermission) {
+        $sql = "SELECT name FROM permission_items WHERE id = :id";
         $sql = $this->pdo->prepare($sql);
         $sql->bindValue(":id", $idPermission);
         $sql->execute();
@@ -93,11 +109,31 @@ class Permissions extends Model {
         return $this->pdo->lastInsertId();
     }
 
+    public function addItem($name) {
+
+        $slug = Store::createSlug($name);
+
+        $sql = "INSERT INTO permission_items (name, slug) VALUES (:name, :slug)";
+        $sql = $this->pdo->prepare($sql);
+        $sql->bindValue(":name", $name);
+        $sql->bindValue(":slug", $slug);
+        $sql->execute();
+
+    }
+
     public function editName($name, $idGroup) {
         $sql = "UPDATE permission_groups SET name = :name WHERE id = :id";
         $sql = $this->pdo->prepare($sql);
         $sql->bindValue(":name", $name);
         $sql->bindValue(":id", $idGroup);
+        $sql->execute();
+    }
+
+    public function editItem($name, $id) {
+        $sql = "UPDATE permission_items SET name = :name WHERE id = :id";
+        $sql = $this->pdo->prepare($sql);
+        $sql->bindValue(":name", $name);
+        $sql->bindValue(":id", $id);
         $sql->execute();
     }
 
@@ -140,6 +176,20 @@ class Permissions extends Model {
         }
 
         return false;
+    }
+
+    public function deleteItem($idItem) {
+
+        $sql = "DELETE FROM permission_items WHERE id = :id";
+        $sql = $this->pdo->prepare($sql);
+        $sql->bindValue(":id", $idItem);
+        $sql->execute();
+
+        $sql = "DELETE FROM permission_links WHERE id_permission_item = :id";
+        $sql = $this->pdo->prepare($sql);
+        $sql->bindValue(":id", $idItem);
+        $sql->execute();
+
     }
     
 }

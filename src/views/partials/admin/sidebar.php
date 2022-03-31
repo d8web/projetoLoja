@@ -12,6 +12,7 @@
     </div>
 
     <div class="sidebar">
+        
         <a href="<?=$base?>/admin" class="<?=$activeMenu === "dashboard" ? "active" : ""?>">
             <span class="material-icons-sharp">grid_view</span>
             <h3>Dashboard</h3>
@@ -23,39 +24,51 @@
                 <h3>Permissões</h3>
             </a>
         <?php endif; ?>
-
-        <a href="#">
-            <span class="material-icons-sharp">receipt_long</span>
-            <h3>Orders</h3>
+        
+        <?php if(AdminHandler::hasPermission("categories_view", $permissions)): ?>
+        <a href="<?=$base?>/admin/categories" class="<?=$activeMenu === "categories" ? "active" : ""?>">
+            <span class="material-icons-sharp">
+                category
+            </span>
+            <h3>Categorias</h3>
         </a>
+        <?php endif; ?>
+
         <a href="#">
             <span class="material-icons-sharp">insights</span>
             <h3>Analytics</h3>
         </a>
+
         <a href="#">
             <span class="material-icons-sharp">mail_outline</span>
             <h3>Messages</h3>
         </a>
+
         <a href="#">
             <span class="material-icons-sharp">inventory</span>
             <h3>Products</h3>
         </a>
+
         <a href="#">
             <span class="material-icons-sharp">report_gmailerrorred</span>
             <h3>Reports</h3>
         </a>
+
         <a href="#">
             <span class="material-icons-sharp">settings</span>
             <h3>Settings</h3>
         </a>
+
         <a href="#">
             <span class="material-icons-sharp">add</span>
             <h3>Add product</h3>
         </a>
+
         <a href="<?= $base ?>/admin/logout">
             <span class="material-icons-sharp">logout</span>
             <h3>Logout</h3>
         </a>
+
     </div>
 </aside>
 <!-- End aside -->

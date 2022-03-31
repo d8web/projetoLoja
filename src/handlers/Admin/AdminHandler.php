@@ -7,28 +7,26 @@ use core\Model;
 class AdminHandler extends Model {
 
     public function checkLoginAdmin() {
-
         if(!empty($_SESSION["admin"])) {
             $token = $_SESSION["admin"];
             
-            $sql = "SELECT * FROM users WHERE token = :token AND admin = 1";
+            $sql = "SELECT id, id_permission, name, email, avatar, admin FROM users WHERE token = :token AND admin = 1";
             $sql = $this->pdo->prepare($sql);
             $sql->bindValue(":token", $token);
             $sql->execute();
 
             if($sql->rowCount() > 0) {
                 $loggedUser = $sql->fetch(\PDO::FETCH_OBJ);
+
                 return $loggedUser;
             }
 
         }
 
         return false;
-
     }
 
     public function validateLoginAdmin($email, $password) {
-
         $sql = "SELECT * FROM users WHERE email = :email AND admin = 1";
         $sql = $this->pdo->prepare($sql);
         $sql->bindValue(":email", $email);
@@ -50,11 +48,10 @@ class AdminHandler extends Model {
                 return $token;
             }
         }
-
     }
 
     public static function hasPermission($permissionSlug, $permissionsArray) {
-        return in_array($permissionSlug, $permissionsArray) ? true : false;
+        return in_array($permissionSlug, $permissionsArray);
     }
 
 }

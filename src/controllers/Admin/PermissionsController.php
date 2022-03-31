@@ -11,6 +11,7 @@ class PermissionsController extends Controller {
 
     private $loggedAdmin;
     private $permissions;
+    private $data;
 
     public function __construct(){
         $adminHandler = new AdminHandler();
@@ -29,62 +30,65 @@ class PermissionsController extends Controller {
             $this->redirect("/admin");
             exit;
         }
+
+        $this->data = [
+            "activeMenu" => "permissions",
+            "loggedAdmin" => $this->loggedAdmin,
+            "permissions" => $this->permissions
+        ];
     }
 
     public function all() {
 
-        $flash = "";
         if(!empty($_SESSION["flash"])) {
-            $flash = $_SESSION["flash"];
+            $this->data["flash"] = $_SESSION["flash"];
             unset($_SESSION["flash"]);
         }
 
-        $success = "";
         if(!empty($_SESSION["success"])) {
-            $success = $_SESSION["success"];
+            $this->data["success"] = $_SESSION["success"];
             unset($_SESSION["success"]);
         }
 
-        $data = [
-            "activeMenu" => "permissions",
-            "loggedAdmin" => $this->loggedAdmin,
-            "permissions" => $this->permissions,
-            "list" => [],
-            "flash" => $flash,
-            "success" => $success
-        ];
+        $p = new Permissions();
+        $this->data["list"] = $p->getAllGroups();
+
+        $this->render("admin/permissions/index", $this->data);
+    }
+
+    public function items() {
+        if(!empty($_SESSION["flash"])) {
+            $this->data["flash"] = $_SESSION["flash"];
+            unset($_SESSION["flash"]);
+        }
+
+        if(!empty($_SESSION["success"])) {
+            $this->data["success"] = $_SESSION["success"];
+            unset($_SESSION["success"]);
+        }
 
         $p = new Permissions();
-        $data["list"] = $p->getAllGroups();
-
-        $this->render("admin/permissions", $data);
+        $this->data["list"] = $p->getAllItems();
+        $this->render("admin/permissions/permissionItems", $this->data);
     }
 
     public function new() {
-
-        $success = "";
         if(!empty($_SESSION["success"])) {
-            $success = $_SESSION["success"];
+            $this->data["success"] = $_SESSION["success"];
             unset($_SESSION["success"]);
         }
 
-        $data = [
-            "activeMenu" => "permissions",
-            "loggedAdmin" => $this->loggedAdmin,
-            "permissions" => $this->permissions,
-            "errorItems" => [],
-            "success" => $success
-        ];
+        $this->data["errorItems"] = [];
 
         if(isset($_SESSION["formError"]) && count($_SESSION["formError"]) > 0) {
-            $data["errorItems"] = $_SESSION["formError"];
+            $this->data["errorItems"] = $_SESSION["formError"];
             unset($_SESSION["formError"]);
         }
 
         $p = new Permissions();
-        $data["permission_items"] = $p->getAllItems();
+        $this->data["permission_items"] = $p->getAllItems();
 
-        $this->render("admin/newPermission", $data);
+        $this->render("admin/permissions/newPermission", $this->data);
     }
 
     public function newSubmit() {
@@ -109,11 +113,43 @@ class PermissionsController extends Controller {
             $this->redirect("/admin/permissions/new");
             exit;
         }
+    }
+
+    public function newItem() {
+        if(!empty($_SESSION["success"])) {
+            $this->data["success"] = $_SESSION["success"];
+            unset($_SESSION["success"]);
+        }
+
+        $this->data["errorItems"] = [];
+
+        if(isset($_SESSION["formError"]) && count($_SESSION["formError"]) > 0) {
+            $this->data["errorItems"] = $_SESSION["formError"];
+            unset($_SESSION["formError"]);
+        }
+
+        $this->render("admin/permissions/newItem", $this->data);
+    }
+
+    public function ItemSubmit() {
+        $p = new Permissions();
+
+        if(!empty($_POST["name"])) {
+            $name = filter_input(INPUT_POST, "name");
+            $p->addItem($name);
+
+            $_SESSION["success"] = "Item de permissão inserido com sucesso!";
+            $this->redirect("/admin/permissions/items");
+            exit;
+        } else {
+            $_SESSION["formError"] = ["name" => "O nome do item não foi enviado!"];
+            $this->redirect("/admin/permissions/newItem");
+            exit;
+        }
 
     }
 
     public function edit($atts) {
-
         $id = $atts["id"];
 
         if(strlen($id) !== 32) {
@@ -127,56 +163,46 @@ class PermissionsController extends Controller {
             exit;
         }
 
-        $success = "";
         if(!empty($_SESSION["success"])) {
-            $success = $_SESSION["success"];
+            $this->data["success"] = $_SESSION["success"];
             unset($_SESSION["success"]);
         }
 
         $p = new Permissions();
 
-        $data = [
-            "activeMenu" => "permissions",
-            "loggedAdmin" => $this->loggedAdmin,
-            "permissions" => $this->permissions,
-            "errorItems" => [],
-            "success" => $success,
-            "id" => $id,
-            "permissionGroupName" => $p->getPermissionGroupName($idGroup),
-            "permissionGroupSlugs" => $p->getUserPermissions($idGroup)
-        ];
+        $this->data["errorItems"] = [];
+        $this->data["id"] = $id;
+        $this->data["permissionGroupName"] = $p->getPermissionGroupName($idGroup);
+        $this->data["permissionGroupSlugs"] = $p->getUserPermissions($idGroup);
 
         if(isset($_SESSION["formError"]) && count($_SESSION["formError"]) > 0) {
-            $data["errorItems"] = $_SESSION["formError"];
+            $this->data["errorItems"] = $_SESSION["formError"];
             unset($_SESSION["formError"]);
         }
 
-        $data["permission_items"] = $p->getAllItems();
-
-        $this->render("admin/editPermission", $data);
-
+        $this->data["permission_items"] = $p->getAllItems();
+        $this->render("admin/permissions/editPermission", $this->data);
     }
 
     public function editSubmit() {
-
         $p = new Permissions();
 
         $id = filter_input(INPUT_POST, "id");
         if(empty($id)) {
-            $_SESSION["flash"] = "Id não enviado!";
+            $this->data["flash"] = "Id não enviado!";
             $this->redirect("/admin/permissions");
             exit;
         }
 
         if(strlen($id) !== 32) {
-            $_SESSION["flash"] = "Id não tem 32 caracteres!";
+            $this->data["flash"] = "Id não tem 32 caracteres!";
             $this->redirect("/admin/permissions");
             exit;
         }
 
         $idGroup = Store::aesDescrypt($id);
         if(empty($idGroup)) {
-            $_SESSION["flash"] = "Id está vazio!";
+            $this->data["flash"] = "Id está vazio!";
             $this->redirect("/admin/permissions");
             exit;
         }
@@ -203,8 +229,80 @@ class PermissionsController extends Controller {
         }
     }
 
-    public function delete($atts) {
+    public function editItem($atts) {
+        $id = $atts["id"];
 
+        if(strlen($id) !== 32) {
+            $this->redirect("/admin/permissions/items");
+            exit;
+        }
+
+        $idItem = Store::aesDescrypt($id);
+        if(empty($idItem)) {
+            $this->redirect("/admin/permissions/items");
+            exit;
+        }
+
+        if(!empty($_SESSION["success"])) {
+            $this->data["success"] = $_SESSION["success"];
+            unset($_SESSION["success"]);
+        }
+
+        $p = new Permissions();
+
+        $this->data["errorItems"] = [];
+        $this->data["id"] = $id;
+        $this->data["permissionItemName"] = $p->getPermissionItemName($idItem);
+
+        if(isset($_SESSION["formError"]) && count($_SESSION["formError"]) > 0) {
+            $this->data["errorItems"] = $_SESSION["formError"];
+            unset($_SESSION["formError"]);
+        }
+
+        $this->data["permission_items"] = $p->getAllItems();
+        $this->render("admin/permissions/editItem", $this->data);
+    }
+
+    public function editItemSubmit() {
+
+        $p = new Permissions();
+
+        $id = filter_input(INPUT_POST, "id");
+        if(empty($id)) {
+            $_SESSION["flash"] = "Id não enviado!";
+            $this->redirect("/admin/permissions/items");
+            exit;
+        }
+
+        if(strlen($id) !== 32) {
+            $_SESSION["flash"] = "Id não tem 32 caracteres!";
+            $this->redirect("/admin/permissions/items");
+            exit;
+        }
+
+        $idItem = Store::aesDescrypt($id);
+        if(empty($idItem)) {
+            $_SESSION["flash"] = "Id está vazio!";
+            $this->redirect("/admin/permissions/items");
+            exit;
+        }
+        
+        if(!empty($_POST["name"])) {
+            $name = filter_input(INPUT_POST, "name");
+            $p->editItem($name, $idItem);
+
+            $_SESSION["success"] = "O grupo de permissão $id, foi editado com sucesso!";
+            $this->redirect("/admin/permissions/items");
+            exit;
+        } else {
+            $_SESSION["formError"] = ["name" => "O nome do grupo não foi enviado!"];
+            $this->redirect("/admin/permissions/edit/item/".$id);
+            exit;
+        }
+
+    }
+
+    public function delete($atts) {
         $id = $atts["id"];
 
         if(strlen($id) !== 32) {
@@ -215,7 +313,7 @@ class PermissionsController extends Controller {
 
         $idGroup = Store::aesDescrypt($id);
         if(empty($idGroup)) {
-            $_SESSION["flash"] = "Ocorreu um erro!";
+            $this->data["flash"] = "Ocorreu um erro!";
             $this->redirect("/admin/permissions");
             exit;
         }
@@ -227,8 +325,30 @@ class PermissionsController extends Controller {
             exit;
         }
         
-        $_SESSION["flash"] = "Você não pode deletar um grupo de permissões que possuem usuários!";
+        $this->data["flash"] = "Você não pode deletar um grupo de permissões que possuem usuários!";
         $this->redirect("/admin/permissions");
     }
 
+    public function deleteItem($atts) {
+        $id = $atts["id"];
+
+        if(strlen($id) !== 32) {
+            $this->data["flash"] = "Ocorreu um erro!";
+            $this->redirect("/admin/permissions/items");
+            exit;
+        }
+
+        $idItem = Store::aesDescrypt($id);
+        if(empty($idItem)) {
+            $this->data["flash"] = "Ocorreu um erro!";
+            $this->redirect("/admin/permissions/items");
+            exit;
+        }
+
+        $p = new Permissions();
+        $p->deleteItem($idItem);
+        $_SESSION["success"] = "O item $id, foi deletado com sucesso!";
+        $this->redirect("/admin/permissions/items");
+        exit;
+    }
 }

@@ -9,7 +9,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Sharp" rel="stylesheet" />
     <link rel="stylesheet" href="<?= $base ?>/assets/css/admin.css">
     <link rel="shortcut icon" href="<?= $base; ?>/assets/images/favicon.ico" type="image/x-icon" />
-    <title>Admin</title>
+    <title>Admin | Loja</title>
 </head>
 
 <body>
