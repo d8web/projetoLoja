@@ -36,4 +36,6 @@ $router->get("/admin/permissions/new", "Admin\PermissionsController@new");
 $router->post("/admin/permissions/newSubmit", "Admin\PermissionsController@newSubmit");
 
 $router->get("/admin/permissions/edit/{id}", "Admin\PermissionsController@edit");
+$router->post("/admin/permissions/editSubmit", "Admin\PermissionsController@editSubmit");
+
 $router->get("/admin/permissions/del/{id}", "Admin\PermissionsController@delete");

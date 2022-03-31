@@ -114,11 +114,97 @@ class PermissionsController extends Controller {
 
     public function edit($atts) {
 
-        echo $atts["id"];
+        $id = $atts["id"];
+
+        if(strlen($id) !== 32) {
+            $this->redirect("/admin/permissions");
+            exit;
+        }
+
+        $idGroup = Store::aesDescrypt($id);
+        if(empty($idGroup)) {
+            $this->redirect("/admin/permissions");
+            exit;
+        }
+
+        $success = "";
+        if(!empty($_SESSION["success"])) {
+            $success = $_SESSION["success"];
+            unset($_SESSION["success"]);
+        }
+
+        $p = new Permissions();
+
+        $data = [
+            "activeMenu" => "permissions",
+            "loggedAdmin" => $this->loggedAdmin,
+            "permissions" => $this->permissions,
+            "errorItems" => [],
+            "success" => $success,
+            "id" => $id,
+            "permissionGroupName" => $p->getPermissionGroupName($idGroup),
+            "permissionGroupSlugs" => $p->getUserPermissions($idGroup)
+        ];
+
+        if(isset($_SESSION["formError"]) && count($_SESSION["formError"]) > 0) {
+            $data["errorItems"] = $_SESSION["formError"];
+            unset($_SESSION["formError"]);
+        }
+
+        $data["permission_items"] = $p->getAllItems();
+
+        $this->render("admin/editPermission", $data);
 
     }
 
+    public function editSubmit() {
+
+        $p = new Permissions();
+
+        $id = filter_input(INPUT_POST, "id");
+        if(empty($id)) {
+            $_SESSION["flash"] = "Id não enviado!";
+            $this->redirect("/admin/permissions");
+            exit;
+        }
+
+        if(strlen($id) !== 32) {
+            $_SESSION["flash"] = "Id não tem 32 caracteres!";
+            $this->redirect("/admin/permissions");
+            exit;
+        }
+
+        $idGroup = Store::aesDescrypt($id);
+        if(empty($idGroup)) {
+            $_SESSION["flash"] = "Id está vazio!";
+            $this->redirect("/admin/permissions");
+            exit;
+        }
+        
+        if(!empty($_POST["name"])) {
+            $name = filter_input(INPUT_POST, "name");
+            $p->editName($name, $idGroup);
+            $p->clearLinks($idGroup);
+
+            if(isset($_POST["items"]) && count($_POST["items"]) > 0) {
+                $items = $_POST["items"];
+                foreach($items as $item) {
+                    $p->linkItemToGroup($item, $idGroup);
+                }
+            }
+
+            $_SESSION["success"] = "O grupo de permissão $id, foi editado com sucesso!";
+            $this->redirect("/admin/permissions");
+            exit;
+        } else {
+            $_SESSION["formError"] = ["name" => "O nome do grupo não foi enviado!"];
+            $this->redirect("/admin/permissions/edit/".$id);
+            exit;
+        }
+    }
+
     public function delete($atts) {
+
         $id = $atts["id"];
 
         if(strlen($id) !== 32) {

@@ -6,10 +6,9 @@ use \src\models\Productsimages;
 use \src\models\Options;
 use src\models\Rates;
 
-class Products extends Model
-{
-    public function getProductToCart($id)
-    {
+class Products extends Model {
+
+    public function getProductToCart($id) {
         $array = [];
         $productsImages = new Productsimages();
 
@@ -27,8 +26,7 @@ class Products extends Model
         return $array;
     }
 
-    public function getAvailableOptions($filters = [])
-    {
+    public function getAvailableOptions($filters = []) {
         $groups = [];
         $ids = [];
 
@@ -40,12 +38,12 @@ class Products extends Model
         $sql->execute();
 
         if($sql->rowCount() > 0) {
-            foreach($sql->fetchAll(\PDO::FETCH_ASSOC) as $product)
-            {
+
+            foreach($sql->fetchAll(\PDO::FETCH_ASSOC) as $product) {
                 $ops = explode(',', $product['options']);
                 $ids[] = $product['id'];
-                foreach($ops as $op)
-                {
+
+                foreach($ops as $op){
                     if(!in_array($op, $groups)) {
                         $groups[] = $op;
                     }
@@ -57,13 +55,11 @@ class Products extends Model
         return $options;
     }
 
-    public function getAvailableValuesFromOptions($groups, $ids)
-    {
+    public function getAvailableValuesFromOptions($groups, $ids) {
         $array = [];
 
         $options = new Options();
-        foreach($groups as $op)
-        {
+        foreach($groups as $op) {
             $array[$op] = [
                 'name' => $options->getName($op),
                 'options' => []
@@ -82,8 +78,7 @@ class Products extends Model
             $sql->execute();
             
             if($sql->rowCount() > 0) {
-                foreach($sql->fetchAll(\PDO::FETCH_ASSOC) as $ops)
-                {
+                foreach($sql->fetchAll(\PDO::FETCH_ASSOC) as $ops) {
                     $array[$ops['id_option']]['options'][] = [
                         'id' => $ops['id_option'],
                         'value'=>$ops['p_value'],
@@ -96,8 +91,7 @@ class Products extends Model
         return $array;
     }
 
-    public function getSaleCount($filters = [])
-    {
+    public function getSaleCount($filters = []) {
         $where = $this->buildWhere($filters);
         $where[] = 'sale = "1"';
 
@@ -114,8 +108,7 @@ class Products extends Model
         }
     }
 
-    public function getMaxPrice($filters = [])
-    {
+    public function getMaxPrice($filters = []) {
         $sql = "SELECT MAX(price) as price FROM products";
         $sql = $this->pdo->prepare($sql);
         $sql->execute();
@@ -128,8 +121,7 @@ class Products extends Model
         }
     }
 
-    public function getListOfStars($filters = [])
-    {
+    public function getListOfStars($filters = []) {
         $array = [];
 
 		$where = $this->buildWhere($filters);
@@ -145,8 +137,7 @@ class Products extends Model
 		return $array;
     }
 
-    public function getListOfBrands($filters = [])
-    {
+    public function getListOfBrands($filters = []) {
         $array = [];
         $where = $this->buildWhere($filters);
 
@@ -162,8 +153,7 @@ class Products extends Model
         return $array;
     }
 
-    public function getList($offset = 0, $limit = 3, Array $filters = [], $random = false)
-    {
+    public function getList($offset = 0, $limit = 3, Array $filters = [], $random = false) {
         $array = [];
         $orderBySql = '';
         if($random) {
@@ -192,8 +182,7 @@ class Products extends Model
         $sql->execute();
         if($sql->rowCount() > 0) {
             $array = $sql->fetchAll(\PDO::FETCH_ASSOC);
-            foreach($array as $key => $item)
-            {
+            foreach($array as $key => $item) {
                 $productsImages = new Productsimages();
                 $array[$key]['images'] = $productsImages->getImagesByProductId($item['id']);
             }
@@ -202,8 +191,7 @@ class Products extends Model
         return $array;
     }
 
-    public function getTotal($filters = [])
-    {
+    public function getTotal($filters = []) {
         $where = $this->buildWhere($filters);
         $sql = "SELECT COUNT(*) as c FROM products WHERE ".implode(' AND ', $where)."";
 
@@ -215,8 +203,7 @@ class Products extends Model
         return $sql['c'] ?? '0';
     }
 
-    private function buildWhere($filters)
-    {
+    private function buildWhere($filters) {
         $where = ['1=1'];
 
         if(!empty($filters['category'])) {
@@ -258,8 +245,7 @@ class Products extends Model
         return $where;
     }
 
-    private function bindWhere($filters, &$sql)
-    {
+    private function bindWhere($filters, &$sql) {
         if(!empty($filters['category'])) {
             $sql->bindValue(':id_category', $filters['category']);
         }
@@ -277,8 +263,7 @@ class Products extends Model
         }
     }
 
-    public function getProductInfo($id)
-    {
+    public function getProductInfo($id) {
         $array = [];
 
         $sql = "SELECT *,
@@ -295,8 +280,7 @@ class Products extends Model
         return $array;
     }
 
-    public function getOptionsByProductId($id)
-    {
+    public function getOptionsByProductId($id) {
         $options = [];
 
 		// Etapa 1 - Pegar os nomes das opções.
@@ -341,8 +325,7 @@ class Products extends Model
 		return $options;
     }
 
-    public function getRates($id, int $qt)
-    {
+    public function getRates($id, int $qt) {
         $array = [];
 
         $rates = new Rates();

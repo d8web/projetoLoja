@@ -7,10 +7,10 @@ use src\models\Categories;
 use src\models\Filters;
 use \src\models\Products;
 
-class HomeController extends Controller
-{
-    public function index()
-    {
+class HomeController extends Controller {
+
+    public function index() {
+        
         if(isset($_GET["payment_intent"]) && !empty($_GET["payment_intent"])) {
             unset($_SESSION["cart"]);
             unset($_SESSION["total"]);

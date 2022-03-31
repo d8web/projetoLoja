@@ -12,22 +12,23 @@
         <main>
             <h1>Permissões</h1>
 
-            <?php if(!empty($flash)): ?>
-                <div class="flash">
-                    <?=$flash?>
-                </div>
-            <?php endif ?>
-
-            <?php if(!empty($success)): ?>
-                <div class="success">
-                    <?=$success?>
-                </div>
-            <?php endif ?>
-
             <div class="box">
                 <div class="box-header">
                     <h3>Grupo de permissões</h3>
-                    <div>
+
+                    <?php if(!empty($flash)): ?>
+                        <div class="flash">
+                            <?=$flash?>
+                        </div>
+                    <?php endif ?>
+
+                    <?php if(!empty($success)): ?>
+                        <div class="success">
+                            <?=$success?>
+                        </div>
+                    <?php endif ?>
+
+                    <div class="button-content">
                         <a
                             class="btn btn-lg"
                             href="<?=$base?>/admin/permissions/new"
@@ -57,6 +58,7 @@
                                             href="<?=$base?>/admin/permissions/edit/<?=Store::aesEncrypt($item["id"])?>"
                                         >Editar</a>
                                         <a
+                                            onclick="return confirm('Você tem certeza que deseja excluir?')"
                                             class="btn btn-sm btn-del <?=$item["totalUsers"] !== 0 ? 'disabled' : ''?>"
                                             href="<?=$base?>/admin/permissions/del/<?=Store::aesEncrypt($item["id"])?>"
                                         >Excluir</a>

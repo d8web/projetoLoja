@@ -4,10 +4,9 @@ use \core\Model;
 
 use \src\models\Brands;
 
-class Filters extends Model
-{
-    public function getFilters($filters = [])
-    {
+class Filters extends Model {
+
+    public function getFilters($filters = []) {
         $brands = new Brands();
         $products = new Products();
 
@@ -67,14 +66,14 @@ class Filters extends Model
 
         // Filtro estrelas
         $star_products = $products->getListOfStars($filters);
-        foreach($array['stars'] as $skey => $item)
-        {
-            foreach($star_products as $key => $sproduct)
-            {
+        foreach($array['stars'] as $skey => $item) {
+
+            foreach($star_products as $key => $sproduct) {
                 if($sproduct['rating'] == $skey) {
                     $array['stars'][$skey] = $sproduct['c'];
                 }
             }
+            
         }
 
         // Filtro promoções
