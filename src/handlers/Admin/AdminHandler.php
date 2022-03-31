@@ -53,4 +53,8 @@ class AdminHandler extends Model {
 
     }
 
+    public static function hasPermission($permissionSlug, $permissionsArray) {
+        return in_array($permissionSlug, $permissionsArray) ? true : false;
+    }
+
 }

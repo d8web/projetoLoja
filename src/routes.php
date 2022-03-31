@@ -28,3 +28,12 @@ $router->post("/submitSignin", "AuthController@submitSignin");
 $router->get("/admin", "Admin\AdminController@index");
 $router->get("/admin/signIn", "Admin\AuthController@signInAdmin");
 $router->post("/admin/submitSigninAdmin", "Admin\AuthController@submit");
+$router->get("/admin/logout", "Admin\AuthController@logout");
+
+$router->get("/admin/permissions", "Admin\PermissionsController@all");
+
+$router->get("/admin/permissions/new", "Admin\PermissionsController@new");
+$router->post("/admin/permissions/newSubmit", "Admin\PermissionsController@newSubmit");
+
+$router->get("/admin/permissions/edit/{id}", "Admin\PermissionsController@edit");
+$router->get("/admin/permissions/del/{id}", "Admin\PermissionsController@delete");

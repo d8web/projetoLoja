@@ -1,14 +1,14 @@
 <?php
 namespace src\handlers;
 
+use src\Config;
 use \src\models\Products;
 use \src\models\Categories;
 use \src\handlers\CartHandler;
 
-class Store
-{
-    public function getTemplateData()
-    {
+class Store {
+
+    public function getTemplateData() {
         $data = [];
 
         $products = new Products();
@@ -34,4 +34,21 @@ class Store
 
         return $data;
     }
+
+    /**
+     * @param string $value
+     * @return string 
+    */
+    public static function aesEncrypt(string $value) {
+        return bin2hex(openssl_encrypt($value, "aes-256-cbc", Config::AES_KEY, OPENSSL_RAW_DATA, Config::AES_IV));
+    }
+
+    /**
+     * @param string $value
+     * @return string
+    */
+    public static function aesDescrypt(string $value) {
+        return openssl_decrypt(hex2bin($value), "aes-256-cbc", Config::AES_KEY, OPENSSL_RAW_DATA, Config::AES_IV);
+    }
+
 }

@@ -13,6 +13,10 @@ class Config {
     const DEFAULT_LANG = 'en';
     const CEP_ORIGIN = '37245000';
 
+    // AES ENCRIPTAÇÃO
+    const AES_KEY = "muf4YDYMw3KeNv7rFkLFRJhkRwapBDVF";
+    const AES_IV = "NjWA3sg3vyk6yVk2";
+
     const STRIPE_KEY = "";
 
     const ERROR_CONTROLLER = 'ErrorController';
