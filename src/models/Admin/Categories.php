@@ -1,7 +1,6 @@
 <?php
 
 namespace src\models\Admin;
-
 use core\Model;
 
 class Categories extends Model {
@@ -48,4 +47,36 @@ class Categories extends Model {
         return false;
     }
 
+    public function addNewCategory($name, $sub) {
+        $sql = "INSERT INTO categories (name, sub) VALUES (:name, :sub)";
+        $sql = $this->pdo->prepare($sql);
+        $sql->bindValue(":name", $name);
+        $sql->bindValue(":sub", $sub);
+        $sql->execute();
+    }
+
+    public function getCategoryById($id) {
+        $sql = "SELECT * FROM categories WHERE id = :id";
+        $sql = $this->pdo->prepare($sql);
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+
+        return $sql->rowCount() > 0 ? $sql->fetch(\PDO::FETCH_ASSOC) : false;
+    }
+
+    public function update($idCategory, $name, $sub) {
+        $sql = "UPDATE categories SET name = :name, sub = :sub WHERE id = :id";
+        $sql = $this->pdo->prepare($sql);
+        $sql->bindValue(":name", $name);
+        $sql->bindValue(":sub", $sub);
+        $sql->bindValue(":id", $idCategory);
+        $sql->execute();
+    }
+
+    public function delete($id) {
+        $sql = "DELETE FROM categories WHERE id = :id";
+        $sql = $this->pdo->prepare($sql);
+        $sql->bindValue(":id", $id);
+        $sql->execute();
+    }
 }

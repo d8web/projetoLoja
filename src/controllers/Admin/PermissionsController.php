@@ -264,7 +264,6 @@ class PermissionsController extends Controller {
     }
 
     public function editItemSubmit() {
-
         $p = new Permissions();
 
         $id = filter_input(INPUT_POST, "id");

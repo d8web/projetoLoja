@@ -321,7 +321,8 @@ table td {
     flex-direction: column;
 }
 
-.form-item input[type="text"] {
+.form-item input[type="text"],
+.form-item select {
     height: 44px;
     padding: 0 10px;
     border: 1px solid #eee;
