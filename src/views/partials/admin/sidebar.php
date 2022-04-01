@@ -34,9 +34,9 @@
         </a>
         <?php endif; ?>
 
-        <a href="#">
-            <span class="material-icons-sharp">insights</span>
-            <h3>Analytics</h3>
+        <a href="<?=$base?>/admin/brands" class="<?=$activeMenu === "brands" ? "active" : ""?>">
+            <span class="material-icons-sharp">loyalty</span>
+            <h3>Marcas</h3>
         </a>
 
         <a href="#">

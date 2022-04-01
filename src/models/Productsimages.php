@@ -3,10 +3,9 @@ namespace src\models;
 
 use \core\Model;
 
-class Productsimages extends Model
-{
-    public function getImagesByProductId($id)
-    {
+class Productsimages extends Model {
+    
+    public function getImagesByProductId($id) {
         $array = [];
 
         $sql = "SELECT url FROM products_images WHERE id_product = :id";

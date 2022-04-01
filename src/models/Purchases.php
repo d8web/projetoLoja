@@ -2,8 +2,4 @@
 
 namespace src\models;
 
-class Purchases {
-
-    
-
-}
+class Purchases {}

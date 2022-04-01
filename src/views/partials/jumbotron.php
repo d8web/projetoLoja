@@ -8,13 +8,13 @@
             </div>
             <div class="col-md-12 col-lg-9 col-xl-6 align-self-center">
                 <div class="flex flex-column">
-                    <div class="row responsive-form-jumbotron">
-                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-7">
-                            <i class="fas fa-phone-alt fs-3 default-color my-icon-font-size"></i>
+                    <div class="row responsive-form-jumbotron mb-1">
+                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-7 d-flex align-items-center">
+                            <i class="fas fa-phone-alt fs-3 default-color my-icon-font-size me-2"></i>
                             (66) 95632-5814
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-5">
-                            <i class="fas fa-envelope fs-3 default-color my-icon-font-size"></i>
+                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-5 d-flex align-items-center justify-content-end">
+                            <i class="fas fa-envelope fs-3 default-color my-icon-font-size me-2"></i>
                             <span class="fs-6">contato@meusite.com</span>
                         </div>
                     </div>

@@ -4,10 +4,9 @@ namespace src\handlers;
 use \src\models\Products;
 use \src\Config;
 
-class CartHandler
-{
-    public static function getList()
-    {
+class CartHandler {
+
+    public static function getList() {
         $products = new Products();
         $array = [];
         $cart = [];
@@ -16,8 +15,7 @@ class CartHandler
             $cart = $_SESSION['cart'];
         }
 
-        foreach($cart as $id => $qt)
-        {
+        foreach($cart as $id => $qt) {
             $info = $products->getProductToCart($id);
             $array[] = [
                 'id' => $id,
@@ -36,8 +34,7 @@ class CartHandler
         return $array;
     }
 
-    public static function getSubtotal()
-    {
+    public static function getSubtotal() {
         $list = self::getList();
         $subtotal = 0;
 
@@ -48,8 +45,7 @@ class CartHandler
         return $subtotal;
     }
 
-    public static function shippingCalculate($cep_destination)
-    {
+    public static function shippingCalculate($cep_destination) {
         $array = [
             'price' => '',
             'date' => ''

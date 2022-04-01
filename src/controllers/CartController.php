@@ -5,10 +5,9 @@ use \core\Controller;
 use src\handlers\CartHandler;
 use src\handlers\Store;
 
-class CartController extends Controller
-{
-    public function cart()
-    {
+class CartController extends Controller {
+
+    public function cart() {
         $store = new Store();
         $cep = '';
         $shipping = [];
@@ -35,8 +34,7 @@ class CartController extends Controller
         $this->render('cart', $data);
     }
 
-    public function action()
-    {
+    public function action() {
         $id = filter_input(INPUT_POST, 'id_product', FILTER_VALIDATE_INT);
         if(!empty($id)) {
             $qt = filter_input(INPUT_POST, 'qt_product', FILTER_VALIDATE_INT);
@@ -54,8 +52,7 @@ class CartController extends Controller
         $this->redirect('/cart');
     }
 
-    public function del($atts)
-    {
+    public function del($atts) {
         if(!empty($atts['id'])) {
             //unset($_SESSION['cart'][$atts['id']]);
 
@@ -69,20 +66,17 @@ class CartController extends Controller
         exit;
     }
 
-    public function clean()
-    {
+    public function clean() {
         $_SESSION['shipping'] = '';
         $this->redirect('/cart');
         exit;
     }
 
-    public function payment()
-    {
+    public function payment() {
         if(!empty($_POST['payment_type'])) {
             $payment_type = filter_input(INPUT_POST, 'payment_type');
 
-            switch($payment_type)
-            {
+            switch($payment_type) {
                 case 'checkout_transparent':
                     $this->redirect('/pscktransparent');
                     exit;

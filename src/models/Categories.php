@@ -2,10 +2,9 @@
 namespace src\models;
 use \core\Model;
 
-class Categories extends Model
-{
-    public function getList()
-    {
+class Categories extends Model {
+
+    public function getList() {
         $array = [];
 
         $sql = "SELECT * FROM categories ORDER BY sub DESC";
@@ -26,8 +25,7 @@ class Categories extends Model
         return $array;
     }
 
-    public function getCategoryTree($id)
-    {
+    public function getCategoryTree($id) {
         $array = [];
 
         $haveChild = true;
@@ -53,8 +51,7 @@ class Categories extends Model
         return $array;
     }
 
-    public function getCategoryName($id)
-    {
+    public function getCategoryName($id) {
         $sql = $this->pdo->prepare("SELECT name FROM categories WHERE id = :id");
         $sql->bindValue(':id', $id);
         $sql->execute();
@@ -65,8 +62,7 @@ class Categories extends Model
         }
     }
 
-    private function organizeCategorie(&$array)
-    {
+    private function organizeCategorie(&$array) {
         foreach($array as $id => $item)
         {
             if(isset($array[$item['sub']])) {
@@ -77,10 +73,8 @@ class Categories extends Model
         }
     }
 
-    private function stillneed($array)
-    {
-        foreach($array as $item)
-        {
+    private function stillneed($array) {
+        foreach($array as $item) {
             if(!empty($item['sub'])) {
                 return true;
             }

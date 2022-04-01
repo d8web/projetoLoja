@@ -2,10 +2,9 @@
 namespace src\models;
 use \core\Model;
 
-class Rates extends Model
-{
-    public function getRates($id, $qt)
-    {
+class Rates extends Model {
+
+    public function getRates($id, $qt) {
         $array = array();
 
 		$sql = "SELECT *,
@@ -22,7 +21,6 @@ class Rates extends Model
 		if($sql->rowCount() > 0) {
 			$array = $sql->fetchAll();
 		}
-
 
 		return $array;
     }

@@ -4,6 +4,7 @@ namespace src\controllers\Admin;
 use core\Controller;
 use src\models\Permissions;
 use src\handlers\Admin\AdminHandler;
+use src\models\Admin\Categories;
 
 class CategoriesController extends Controller {
 
@@ -30,7 +31,9 @@ class CategoriesController extends Controller {
     }
 
     public function index() {
-        $this->data["list"] = [];
+        $categories = new Categories();
+
+        $this->data["list"] = $categories->getAll();
         $this->render("admin/categories/index", $this->data);
     }
 

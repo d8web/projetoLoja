@@ -7,10 +7,9 @@ use src\models\Categories;
 use \src\models\Products;
 use \src\models\Filters;
 
-class CategoriesController extends Controller
-{
-    public function index($atts)
-    {
+class CategoriesController extends Controller {
+    
+    public function index($atts) {
         $store = new Store();
         $products = new Products();
         $categories = new Categories();

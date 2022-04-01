@@ -50,3 +50,14 @@ $router->get("/admin/permissions/del/item/{id}", "Admin\PermissionsController@de
 
 // Categories
 $router->get("/admin/categories", "Admin\CategoriesController@index");
+
+// Brands
+$router->get("/admin/brands", "Admin\BrandsController@index");
+
+$router->get("/admin/brands/new", "Admin\BrandsController@new");
+$router->post("/admin/brands/newSubmit", "Admin\BrandsController@newSubmit");
+
+$router->get("/admin/brands/edit/{id}", "Admin\BrandsController@edit");
+$router->post("/admin/brands/editSubmit", "Admin\BrandsController@editSubmit");
+
+$router->get("/admin/brands/del/{id}", "Admin\BrandsController@delete");
