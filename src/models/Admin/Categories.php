@@ -73,10 +73,41 @@ class Categories extends Model {
         $sql->execute();
     }
 
-    public function delete($id) {
-        $sql = "DELETE FROM categories WHERE id = :id";
+    public function scanCategories($idCategory, $cats = []) {
+        if(!in_array($idCategory, $cats)) {
+            $cats[] = $idCategory;
+        }
+
+        $sql = "SELECT id FROM categories WHERE sub = :id";
         $sql = $this->pdo->prepare($sql);
-        $sql->bindValue(":id", $id);
+        $sql->bindValue(":id", $idCategory);
         $sql->execute();
+
+        if($sql->rowCount() > 0) {
+            $data = $sql->fetchAll();
+
+            foreach($data as $item) {
+                if(!in_array($item["id"], $cats)) {
+                    $cats[] = $item["id"];
+                }
+
+                $cats = $this->scanCategories($item["id"], $cats);
+            }
+        }
+
+        return $cats;
+    }
+
+    public function hasProducts($array) {
+        $sql = "SELECT COUNT(*) as c FROM products WHERE id_category IN (".implode(',', $array).")";
+        $sql = $this->pdo->query($sql);
+        $data = $sql->fetch();
+
+        return intval($data["c"]) > 0 ? true : false;
+    }
+
+    public function deleteCategories($array) {
+        $sql = "DELETE FROM categories WHERE id IN (".implode(',', $array).")";
+        $sql = $this->pdo->query($sql);
     }
 }

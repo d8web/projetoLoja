@@ -13,7 +13,10 @@
             <?=$render("admin/navbar", ["loggedAdmin" => $loggedAdmin])?>
 
             <div class="content">
-                <h1>Dashboard</h1>
+                <div class="flex">
+                    <h1>Dashboard</h1>
+                    <a class="btn btn" href="<?=$base?>" target="_blank">Ver loja</a>
+                </div>
     
                 <div class="insights">
                     <!-- Sales box start -->

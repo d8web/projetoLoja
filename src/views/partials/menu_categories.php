@@ -12,10 +12,14 @@
                     >
                         <?=$this->lang->get("SELECTCATEGORY");?>
                     </button>
-                    <ul class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1">
+                    <ul
+                        class="dropdown-menu w-100" aria-labelledby="dropdownMenuButton1"
+                    >
                         <?php foreach($categories as $item): ?>
                             <li>
-                                <a class="dropdown-item" href="<?=$base;?>/categories/<?=$item['id'];?>">
+                                <a
+                                    class="dropdown-item" href="<?=$base;?>/categories/<?=$item['id'];?>"
+                                >
                                     <?=$item['name'];?>
                                 </a>
                             </li>

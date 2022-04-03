@@ -57,6 +57,8 @@ $router->post("/admin/categories/newSubmit", "Admin\CategoriesController@newSubm
 $router->get("/admin/category/edit/{id}", "Admin\CategoriesController@edit");
 $router->post("/admin/categories/editSubmit", "Admin\CategoriesController@editAction");
 
+$router->get("/admin/category/del/{id}", "Admin\CategoriesController@delete");
+
 // Brands
 $router->get("/admin/brands", "Admin\BrandsController@index");
 

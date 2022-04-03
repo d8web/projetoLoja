@@ -1,5 +1,7 @@
 <?php foreach($subs as $sub): ?>
-    <option value="<?=$sub['id'];?>" <?php echo ($category==$sub['id']?'selected="selected"':'');?>>
+    <option
+        value="<?=$sub['id'];?>" <?php echo ($category==$sub['id']?'selected="selected"':'');?>
+    >
         <?php for($q=0;$q<$level;$q++) echo '- '; ?>
         <?=$sub['name'];?>
     </option>

@@ -55,15 +55,25 @@
                         </a>
                         <ul class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
                             <li>
-                                <a class="dropdown-item text-dark" href="<?=$base;?>/language/en">English</a>
+                                <a
+                                    class="dropdown-item text-dark"
+                                    href="<?=$base;?>/language/en"
+                                >English</a>
                             </li>
                             <li>
-                                <a class="dropdown-item text-dark" href="<?=$base;?>/language/pt-br">Português</a>
+                                <a 
+                                    class="dropdown-item text-dark" 
+                                    href="<?=$base;?>/language/pt-br"
+                                >Português</a>
                             </li>
                         </ul>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-dark" aria-current="page" href="<?=$base;?>/login">
+                        <a
+                            class="nav-link text-dark"
+                            aria-current="page"
+                            href="<?=$base;?>/signin"
+                        >
                             <?=$this->lang->get("LOGIN");?>
                         </a>
                     </li>

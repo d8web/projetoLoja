@@ -1,3 +1,8 @@
+<?php
+    if(!isset($selected)) {
+        $selected = ""; 
+    }
+?>
 <?php foreach($list as $item): ?>
     <option <?=($item["id"]===$selected) ? 'selected="selected"':''?> value="<?=$item["id"]?>">
         <?php

@@ -13,7 +13,8 @@
                             <i class="fas fa-phone-alt fs-3 default-color my-icon-font-size me-2"></i>
                             (66) 95632-5814
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-6 col-xl-5 d-flex align-items-center justify-content-end">
+                        <div
+                            class="col-sm-12 col-md-6 col-lg-6 col-xl-5 d-flex align-items-center justify-content-end">
                             <i class="fas fa-envelope fs-3 default-color my-icon-font-size me-2"></i>
                             <span class="fs-6">contato@meusite.com</span>
                         </div>
@@ -30,7 +31,10 @@
                                     value="<?= !empty($search_term) ? $search_term : ''; ?>"
                                         class="form-control p-2 border"
                                 />                                
-                                <select name="category" class="my-padding-form no-outline border responsive-input">
+                                <select
+                                    name="category"
+                                    class="my-padding-form no-outline border responsive-input"
+                                    >
                                     <option value="">
                                         <?=$this->lang->get("ALLCATEGORIES");?>
                                     </option>
@@ -60,7 +64,8 @@
                     </div>
                 </div>
             </div>
-            <div class="col-md-12 col-lg-12 col-xl-3 align-self-center d-flex justify-content-end my-flex-jumbotron mt-3">
+            <div
+                class="col-md-12 col-lg-12 col-xl-3 align-self-center d-flex justify-content-end my-flex-jumbotron mt-3">
                 <a href="<?=$base;?>/cart" class="row responsive-cart">
                     <div class="col-3 d-flex justify-content-center align-items-center cart-item responsive-cart">
                         <i class="fas fa-shopping-cart fs-1 default-color"></i>

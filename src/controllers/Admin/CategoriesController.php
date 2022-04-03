@@ -179,8 +179,15 @@ class CategoriesController extends Controller {
             $this->redirect("/admin/categories");
         }
 
-        // Deletar
-        $categories->delete($idCategory);
+        // Verificar se essa categoria possui produtos atrelados a mesma
+        $cats = $categories->scanCategories($idCategory);
+        
+        if(!$categories->hasProducts($cats)) {
+            // Verificar se a categoria tem sub categorias
+            // Se sim, deletar as sub categorias tbm, e os produtos da sub categoria
+            $categories->deleteCategories($cats);
+        }
+
         $_SESSION["success"] = "Categoria deletada com sucesso!";
         $this->redirect("/admin/categories");
     }

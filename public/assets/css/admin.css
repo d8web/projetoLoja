@@ -349,6 +349,12 @@ table td {
     margin: 16px 0px;
 }
 
+.flex {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
 .flash {
     width: 60%;
     margin: 0 20px;
