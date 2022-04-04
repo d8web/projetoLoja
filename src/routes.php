@@ -69,3 +69,17 @@ $router->get("/admin/brands/edit/{id}", "Admin\BrandsController@edit");
 $router->post("/admin/brands/editSubmit", "Admin\BrandsController@editSubmit");
 
 $router->get("/admin/brands/del/{id}", "Admin\BrandsController@delete");
+
+// Páginas
+$router->get("/admin/pages", "Admin\PagesController@index");
+
+$router->get("/admin/pages/new", "Admin\PagesController@new");
+$router->post("/admin/pages/newSubmit", "Admin\PagesController@newSubmit");
+
+$router->get("/admin/pages/edit/{id}", "Admin\PagesController@edit");
+$router->post("/admin/pages/editSubmit", "Admin\PagesController@editSubmit");
+
+$router->get("/admin/pages/del/{id}", "Admin\PagesController@delete");
+
+// Upload images tinymce
+$router->post("/admin/pages/upload", "Admin\PagesController@upload");

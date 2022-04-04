@@ -4,10 +4,15 @@ use \core\Model;
 
 class Brands extends Model {
     
-    public function getList() {
+    public function getList($showProductCount = false) {
         $array = [];
 
-        $sql = "SELECT * FROM brands";
+        if($showProductCount) {
+            $sql = "SELECT *, (select count(*) from products where products.id_brand = brands.id) as productCount FROM brands";
+        } else {
+            $sql = "SELECT * FROM brands";
+        }
+
         $sql = $this->pdo->query($sql);
 
         if($sql->rowCount() > 0) {
@@ -49,10 +54,21 @@ class Brands extends Model {
 
     public function deleteBrand($id) {
 
-        $sql = "DELETE FROM brands WHERE id = :id";
+        $sql = "SELECT COUNT(*) as c FROM products WHERE id_brand = :id";
         $sql = $this->pdo->prepare($sql);
         $sql->bindValue(":id", $id);
         $sql->execute();
+
+        $data = $sql->fetch();
+        if($data["c"] == 0) {
+            $sql = "DELETE FROM brands WHERE id = :id";
+            $sql = $this->pdo->prepare($sql);
+            $sql->bindValue(":id", $id);
+            $sql->execute();
+            return true;
+        }
+
+        return false;
 
     }
 }

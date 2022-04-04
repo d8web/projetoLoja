@@ -3,6 +3,7 @@ namespace src;
 
 class Config {
     const BASE_DIR = '/loja/public';
+    const BASE_URL = "http://localhost/loja";
 
     const DB_DRIVER = 'mysql';
     const DB_HOST = 'localhost';

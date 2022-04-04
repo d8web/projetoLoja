@@ -26,32 +26,29 @@
         <?php endif; ?>
         
         <?php if(AdminHandler::hasPermission("categories_view", $permissions)): ?>
-        <a href="<?=$base?>/admin/categories" class="<?=$activeMenu === "categories" ? "active" : ""?>">
-            <span class="material-icons-sharp">
-                category
-            </span>
-            <h3>Categorias</h3>
-        </a>
+            <a href="<?=$base?>/admin/categories" class="<?=$activeMenu === "categories" ? "active" : ""?>">
+                <span class="material-icons-sharp">category</span>
+                <h3>Categorias</h3>
+            </a>
+        <?php endif; ?>
+        
+        <?php if(AdminHandler::hasPermission("brands_view", $permissions)): ?>
+            <a href="<?=$base?>/admin/brands" class="<?=$activeMenu === "brands" ? "active" : ""?>">
+                <span class="material-icons-sharp">loyalty</span>
+                <h3>Marcas</h3>
+            </a>
+        <?php endif; ?>
+        
+        <?php if(AdminHandler::hasPermission("pages_view", $permissions)): ?>
+            <a href="<?=$base?>/admin/pages" class="<?=$activeMenu === "pages" ? "active" : ""?>">
+                <span class="material-icons-sharp">description</span>
+                <h3>Páginas</h3>
+            </a>
         <?php endif; ?>
 
-        <a href="<?=$base?>/admin/brands" class="<?=$activeMenu === "brands" ? "active" : ""?>">
-            <span class="material-icons-sharp">loyalty</span>
-            <h3>Marcas</h3>
-        </a>
-
-        <a href="#">
-            <span class="material-icons-sharp">mail_outline</span>
-            <h3>Messages</h3>
-        </a>
-
-        <a href="#">
-            <span class="material-icons-sharp">inventory</span>
-            <h3>Products</h3>
-        </a>
-
-        <a href="#">
-            <span class="material-icons-sharp">report_gmailerrorred</span>
-            <h3>Reports</h3>
+        <a href="<?=$base?>/admin/products" class="<?=$activeMenu === "products" ? "active" : ""?>">
+            <span class="material-icons-sharp">inventory_2</span>
+            <h3>Produtos</h3>
         </a>
 
         <a href="#">

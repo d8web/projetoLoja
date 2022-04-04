@@ -321,15 +321,26 @@ table td {
     flex-direction: column;
 }
 
+.form-item label {
+    margin-bottom: 10px;
+}
+
 .form-item input[type="text"],
-.form-item select {
+.form-item select,
+.form-item textarea {
     height: 44px;
     padding: 0 10px;
     border: 1px solid #eee;
-    margin: 10px 0;
+    margin-bottom: 10px;
     border-radius: 4px;
     font-size: 16px;
     color: #333;
+}
+
+.form-item textarea {
+    resize: vertical;
+    min-height: 400px;
+    line-height: 28px;
 }
 
 .flex-item-form input[type="checkbox"] {

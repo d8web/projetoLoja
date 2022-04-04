@@ -24,6 +24,12 @@ class CategoriesController extends Controller {
         $p = new Permissions();
         $this->permissions = $p->getUserPermissions($this->loggedAdmin->id_permission);
 
+        // Verificar se o usuário tem permissão para ver a lista de permissões
+        if(!AdminHandler::hasPermission("categories_view", $this->permissions)) {
+            $this->redirect("/admin");
+            exit;
+        }
+
         $this->data = [
             "activeMenu" => "categories",
             "loggedAdmin" => $this->loggedAdmin,
@@ -149,8 +155,6 @@ class CategoriesController extends Controller {
         if(!empty($_POST["sub"])) {
             $sub = filter_input(INPUT_POST, "sub");
         }
-
-        // print_r($sub);exit;
 
         // Atualizar
         $categories->update($idCategory, $name, $sub);

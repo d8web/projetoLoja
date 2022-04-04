@@ -10,14 +10,16 @@
         ])?>
 
         <main>
-            <?=$render("admin/navbar", ["loggedAdmin" => $loggedAdmin])?>
+            <?=$render("admin/navbar", [
+                "loggedAdmin" => $loggedAdmin
+            ])?>
 
             <div class="content">
-                <h1>Marcas</h1>
+                <h1>Páginas</h1>
     
                 <div class="box">
                     <div class="box-header">
-                        <h3>Lista de marcas</h3>
+                        <h3>Lista de páginas</h3>
     
                         <?php if(!empty($flash)): ?>
                             <div class="flash">
@@ -34,7 +36,7 @@
                         <div class="button-content">
                             <a
                                 class="btn btn-lg"
-                                href="<?=$base?>/admin/brands/new"
+                                href="<?=$base?>/admin/pages/new"
                             >Adicionar</a>
                         </div>
                     </div>
@@ -43,25 +45,23 @@
                         <table>
                             <thead>
                                 <tr>
-                                    <th>Nome da marca</th>
-                                    <th>Produtos</th>
+                                    <th>Título</th>
                                     <th width="200" style="text-align: end;">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach($list as $item): ?>
                                     <tr>
-                                        <td><?=$item["name"]?></td>
-                                        <td><?=$item["productCount"]?></td>
+                                        <td><?=$item["title"]?></td>
                                         <td style="text-align: end;">
                                             <a
                                                 class="btn btn-sm btn-edit"
-                                                href="<?=$base?>/admin/brands/edit/<?=Store::aesEncrypt($item["id"])?>"
+                                                href="<?=$base?>/admin/pages/edit/<?=Store::aesEncrypt($item["id"])?>"
                                             >Editar</a>
                                             <a
                                                 onclick="return confirm('Você tem certeza que deseja excluir?')"
-                                                class="btn btn-sm btn-del <?=$item["productCount"] !== 0 ? 'disabled' : ''?>"
-                                                href="<?=$base?>/admin/brands/del/<?=Store::aesEncrypt($item["id"])?>"
+                                                class="btn btn-sm btn-del"
+                                                href="<?=$base?>/admin/pages/del/<?=Store::aesEncrypt($item["id"])?>"
                                             >Excluir</a>
                                         </td>
                                     </tr>

@@ -25,6 +25,12 @@ class BrandsController extends Controller {
         $p = new Permissions();
         $this->permissions = $p->getUserPermissions($this->loggedAdmin->id_permission);
 
+        // Verificar se o usuário tem permissão para ver a lista de permissões
+        if(!AdminHandler::hasPermission("brands_view", $this->permissions)) {
+            $this->redirect("/admin");
+            exit;
+        }
+
         $this->data = [
             "activeMenu" => "brands",
             "loggedAdmin" => $this->loggedAdmin,
@@ -45,7 +51,7 @@ class BrandsController extends Controller {
 
         $brands = new Brands();
 
-        $this->data["list"] = $brands->getList();
+        $this->data["list"] = $brands->getList(true);
         $this->render("admin/brands/index", $this->data);
     }
 
@@ -179,8 +185,16 @@ class BrandsController extends Controller {
             exit;
         }
 
-        // Deletar
-        $brands->deleteBrand($idBrand);
+        // Verificar se a marca tem produtos atrelados a ela dentro do método do model BRAND [deleteBrand]
+        // Caso não tenha nenhum produto, deleta, caso tenha, não deleta
+        $brandDelete = $brands->deleteBrand($idBrand);
+
+        if(!$brandDelete) {
+            $_SESSION["flash"] = "Você não pode deletar uma marca que possui produtos cadastrados.";
+            $this->redirect("/admin/brands");
+            exit;
+        }
+
         $_SESSION["success"] = "Marca deletada com sucesso!";
         $this->redirect("/admin/brands");
     }
