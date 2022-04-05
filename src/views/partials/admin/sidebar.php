@@ -45,11 +45,13 @@
                 <h3>Páginas</h3>
             </a>
         <?php endif; ?>
-
-        <a href="<?=$base?>/admin/products" class="<?=$activeMenu === "products" ? "active" : ""?>">
-            <span class="material-icons-sharp">inventory_2</span>
-            <h3>Produtos</h3>
-        </a>
+        
+        <?php if(AdminHandler::hasPermission("products_view", $permissions)): ?>
+            <a href="<?=$base?>/admin/products" class="<?=$activeMenu === "products" ? "active" : ""?>">
+                <span class="material-icons-sharp">inventory_2</span>
+                <h3>Produtos</h3>
+            </a>
+        <?php endif; ?>
 
         <a href="#">
             <span class="material-icons-sharp">settings</span>

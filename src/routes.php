@@ -87,3 +87,16 @@ $router->get("/admin/pages/del/{id}", "Admin\PagesController@delete");
 
 // Upload images tinymce
 $router->post("/admin/pages/upload", "Admin\PagesController@upload");
+
+$router->get("/admin/products", "Admin\ProductsController@index");
+
+// Options
+$router->get("/admin/options", "Admin\OptionsController@index");
+
+$router->get("/admin/options/new", "Admin\OptionsController@new");
+$router->post("/admin/options/newSubmit", "Admin\OptionsController@newSubmit");
+
+$router->get("/admin/options/edit/{id}", "Admin\OptionsController@edit");
+$router->post("/admin/options/editSubmit", "Admin\OptionsController@editSubmit");
+
+$router->get("/admin/options/del/{id}", "Admin\OptionsController@delete");

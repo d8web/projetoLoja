@@ -1,14 +1,14 @@
 <?php
+
 namespace src\controllers\Admin;
 
 use core\Controller;
-use src\models\Permissions;
 use src\handlers\Admin\AdminHandler;
 use src\handlers\Store;
-use src\models\Admin\Categories;
-use src\models\Brands;
+use src\models\Admin\Options;
+use src\models\Permissions;
 
-class BrandsController extends Controller {
+class OptionsController extends Controller {
 
     private $loggedAdmin;
     private $permissions;
@@ -26,13 +26,13 @@ class BrandsController extends Controller {
         $this->permissions = $p->getUserPermissions($this->loggedAdmin->id_permission);
 
         // Verificar se o usuário tem permissão para ver a lista de permissões
-        if(!AdminHandler::hasPermission("brands_view", $this->permissions)) {
+        if(!AdminHandler::hasPermission("products_view", $this->permissions)) {
             $this->redirect("/admin");
             exit;
         }
 
         $this->data = [
-            "activeMenu" => "brands",
+            "activeMenu" => "products",
             "loggedAdmin" => $this->loggedAdmin,
             "permissions" => $this->permissions
         ];
@@ -49,18 +49,13 @@ class BrandsController extends Controller {
             unset($_SESSION["success"]);
         }
 
-        $brands = new Brands();
-
-        $this->data["list"] = $brands->getList(true);
-        $this->render("admin/brands/index", $this->data);
+        $options = new Options();
+        $this->data["list"] = $options->getList();
+        
+        $this->render("admin/options/index", $this->data);
     }
 
     public function new() {
-        if(!empty($_SESSION["success"])) {
-            $this->data["success"] = $_SESSION["success"];
-            unset($_SESSION["success"]);
-        }
-
         $this->data["errorItems"] = [];
 
         if(isset($_SESSION["formError"]) && count($_SESSION["formError"]) > 0) {
@@ -68,22 +63,22 @@ class BrandsController extends Controller {
             unset($_SESSION["formError"]);
         }
 
-        $this->render("admin/brands/new", $this->data);
+        $this->render("admin/options/new", $this->data);
     }
 
     public function newSubmit() {
         $name = filter_input(INPUT_POST, "name");
         if(empty($name)) {
-            $_SESSION["formError"] = ["name" => "O nome da marca não foi enviado!"];
-            $this->redirect("/admin/brands/new");
+            $_SESSION["formError"] = ["name" => "O nome da opção não foi enviado!"];
+            $this->redirect("/admin/options/new");
             exit;
         }
 
-        $brands = new Brands();
-        $brands->newBrand($name);
+        $options = new Options();
+        $options->newOption($name);
 
-        $_SESSION["success"] = "Marca inserida com sucesso!";
-        $this->redirect("/admin/brands");
+        $_SESSION["success"] = "Opção inserida com sucesso!";
+        $this->redirect("/admin/options");
         exit;
     }
 
@@ -91,13 +86,13 @@ class BrandsController extends Controller {
         $id = $atts["id"];
 
         if(strlen($id) !== 32) {
-            $this->redirect("/admin/brands");
+            $this->redirect("/admin/options");
             exit;
         }
 
-        $idBrand = Store::aesDescrypt($id);
-        if(empty($idBrand)) {
-            $this->redirect("/admin/brands");
+        $idOption = Store::aesDescrypt($id);
+        if(empty($idOption)) {
+            $this->redirect("/admin/options");
             exit;
         }
 
@@ -106,11 +101,11 @@ class BrandsController extends Controller {
             unset($_SESSION["success"]);
         }
 
-        $brands = new Brands();
-        $this->data["brandData"] = $brands->getBrandById($idBrand);
-        if(!$this->data["brandData"]) {
+        $options = new Options();
+        $this->data["optionData"] = $options->getOptionById($idOption);
+        if(!$this->data["optionData"]) {
             $_SESSION["flash"] = "Nada foi encontrado!";
-            $this->redirect("/admin/brands");
+            $this->redirect("/admin/options");
             exit;
         }
 
@@ -121,7 +116,7 @@ class BrandsController extends Controller {
         }
 
         $this->data["id"] = $id;
-        $this->render("admin/brands/edit", $this->data);
+        $this->render("admin/options/edit", $this->data);
     }
 
     public function editSubmit() {
@@ -129,74 +124,65 @@ class BrandsController extends Controller {
 
         if(strlen($id) !== 32) {
             $this->data["flash"] = "Ocorreu um erro!";
-            $this->redirect("/admin/brands");
+            $this->redirect("/admin/options");
             exit;
         }
 
-        $idBrand = Store::aesDescrypt($id);
-        if(empty($idBrand)) {
-            $this->data["flash"] = "Ocorreu um erro!";
-            $this->redirect("/admin/brands");
+        $idOption = Store::aesDescrypt($id);
+        if(empty($idOption)) {
+            $_SESSION["flash"] = "Ocorreu um erro!";
+            $this->redirect("/admin/options");
             exit;
         }
 
-        $brands = new Brands();
-        $brandData = $brands->getBrandById($idBrand);
-        if(!$brandData) {
+        $options = new Options();
+        $optionData = $options->getOptionById($idOption);
+        if(!$optionData) {
             $_SESSION["flash"] = "Nada para deletar!";
-            $this->redirect("/admin/brands");
+            $this->redirect("/admin/options");
             exit;
         }
 
         $name = filter_input(INPUT_POST, "name");
         if(empty($name)) {
-            $_SESSION["formError"] = ["name" => "O nome da marca não foi enviado!"];
-            $this->redirect("/admin/brands");
+            $_SESSION["formError"] = ["name" => "O nome da opção não foi enviado!"];
+            $this->redirect("/admin/options/edit/".$id);
             exit;
         }
 
-        $brands = new Brands();
-        $brands->updateBrandName($name, $idBrand);
-        $_SESSION["success"] = "Marca atualizada com sucesso!";
-        $this->redirect("/admin/brands");
+        $options->updateOptionName($name, $idOption);
+        $_SESSION["success"] = "Opção atualizada com sucesso!";
+        $this->redirect("/admin/options");
     }
 
     public function delete($atts) {
         $id = $atts["id"];
 
         if(strlen($id) !== 32) {
-            $this->data["flash"] = "Ocorreu um erro!";
-            $this->redirect("/admin/brands");
+            $_SESSION["flash"] = "Ocorreu um erro!";
+            $this->redirect("/admin/options");
             exit;
         }
 
-        $idBrand = Store::aesDescrypt($id);
-        if(empty($idBrand)) {
-            $this->data["flash"] = "Ocorreu um erro!";
-            $this->redirect("/admin/brands");
+        $idOption = Store::aesDescrypt($id);
+        if(empty($idOption)) {
+            $_SESSION["flash"] = "Ocorreu um erro!";
+            $this->redirect("/admin/options");
             exit;
         }
 
-        $brands = new Brands();
-        $brandData = $brands->getBrandById($idBrand);
+        $options = new Options();
+        $brandData = $options->getOptionById($idOption);
         if(!$brandData) {
             $_SESSION["flash"] = "Nada para deletar!";
-            $this->redirect("/admin/brands");
+            $this->redirect("/admin/options");
             exit;
         }
 
-        // Verificar se a marca tem produtos atrelados a ela dentro do método do model BRAND [deleteBrand]
-        // Caso não tenha nenhum produto, deleta, caso tenha, não deleta
-        $brandDelete = $brands->deleteBrand($idBrand);
-
-        if(!$brandDelete) {
-            $_SESSION["flash"] = "Você não pode deletar uma marca que possui produtos cadastrados.";
-            $this->redirect("/admin/brands");
-            exit;
-        }
-
-        $_SESSION["success"] = "Marca deletada com sucesso!";
-        $this->redirect("/admin/brands");
+        $options->deleteOption($idOption);
+        $_SESSION["success"] = "Opção deletada com sucesso!";
+        $this->redirect("/admin/options");
     }
+
 
 }
