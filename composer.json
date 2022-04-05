@@ -9,6 +9,7 @@
     },
     "require": {
         "stripe/stripe-php": "^7.119",
-        "paypal/paypal-checkout-sdk": "^1.0"
+        "paypal/paypal-checkout-sdk": "^1.0",
+        "pagseguro/pagseguro-php-sdk": "^4.0"
     }
 }

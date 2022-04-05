@@ -77,8 +77,8 @@ class CartController extends Controller {
             $payment_type = filter_input(INPUT_POST, 'payment_type');
 
             switch($payment_type) {
-                case 'checkout_transparent':
-                    $this->redirect('/pscktransparent');
+                case 'checkout_pagseguro':
+                    $this->redirect('/pagseguro');
                     exit;
                 break;
                 case "checkout_stripe":

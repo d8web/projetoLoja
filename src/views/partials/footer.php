@@ -86,9 +86,9 @@
 
             <div class="w-100 mt-5 mb-4">
                 <div class="row">
-                    <div class="col-md-6 col-lg-3 mt-5 mb-3 d-flex align-items-center justify-content-center">
+                    <div class="col-md-6 col-lg-3 mt-5 mb-3 d-flex align-items-center">
                         <a href="<?=$base;?>" class="fs-1 m-0 default-color fw-bold">
-                            <img src="<?=$base;?>/assets/images/logo.png" class="w-100" alt="logo"/>
+                            <h2>Ecommerce</h2>
                         </a>
                     </div>
                     <div class="col-md-6 col-lg-3 d-flex flex-column text-center mt-5">

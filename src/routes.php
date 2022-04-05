@@ -17,7 +17,11 @@ $router->post('/payment_redirect', 'CartController@payment');
 
 $router->get('/clean', 'CartController@clean');
 
-$router->get('/pscktransparent', 'PagseguroController@checkoutTransparent');
+$router->get('/pagseguro', 'PagseguroController@checkoutTransparent');
+$router->post('/pagseguro/checkout', 'PagseguroController@checkoutAjax');
+$router->get('/pagseguro/thanks', 'PagseguroController@thanks');
+$router->get('/pagseguro/notification', 'PagseguroController@notification');
+
 $router->get("/stripe", 'StripeController@stripe');
 $router->get("/paypal", 'PaypalController@paypal');
 

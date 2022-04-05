@@ -34,7 +34,7 @@ class LoginHandler extends Model {
         $sql->bindValue(":email", $email);
         $sql->execute();
 
-        $user = $sql->fetch();
+        $user = $sql->fetch(\PDO::FETCH_ASSOC);
 
         if($user) {
             if(password_verify($password, $user['password'])) {

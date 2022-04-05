@@ -81,6 +81,7 @@
                         <form action="<?=$base;?>/payment_redirect" method="POST">
                             <div class="form-group mb-2">
                                 <select name="payment_type" class="form-select">
+                                    <option value="checkout_pagseguro">Pagseguro</option>
                                     <option value="checkout_stripe">Stripe</option>
                                     <option value="checkout_paypal">Paypal</option>
                                 </select>
